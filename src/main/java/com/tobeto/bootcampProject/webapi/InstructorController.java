@@ -1,30 +1,45 @@
 package com.tobeto.bootcampProject.webapi;
 
-import com.tobeto.bootcampProject.dataacces.InstructorRepository;
-import com.tobeto.bootcampProject.entities.Instructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.tobeto.bootcampProject.business.abstracts.InstructorService;
+import com.tobeto.bootcampProject.business.requests.CreateInstructorRequest;
+import com.tobeto.bootcampProject.business.requests.UpdateInstructorRequest;
+import com.tobeto.bootcampProject.business.responses.GetAllInstructorsResponse;
+import com.tobeto.bootcampProject.business.responses.GetByIdInstructorResponse;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/instructor")
+@AllArgsConstructor
+@RequestMapping("/Instructors")
 public class InstructorController {
-    private InstructorRepository instructorRepository;
 
-    public InstructorController(InstructorRepository instructorRepository) {
-        this.instructorRepository = instructorRepository;
-    }
+    private InstructorService instructorService;
 
     @RequestMapping("/getall")
-    public List<Instructor> findAll() {return instructorRepository.findAll();}
-
-    @RequestMapping("/add2")
-    public void add() {
-        Instructor instructor = new Instructor();
-        instructor.setUsername("hande");
-        instructor.setEmail("handee@gmail.com");
-        instructor.setCompanyName("handee");
-        instructorRepository.save(instructor);
+    public List<GetAllInstructorsResponse> findAll(){
+        return  instructorService.getAll();
     }
+
+    @GetMapping("/{id}")
+    public GetByIdInstructorResponse getById(@PathVariable int id) {
+        return instructorService.getById(id);
+    }
+    @PostMapping("/add")
+    @ResponseStatus(code= HttpStatus.CREATED)
+    public  void add(@RequestBody() CreateInstructorRequest instructorRequest){
+        instructorService.add(instructorRequest);
+    }
+    @PutMapping
+    public void update(@RequestBody() UpdateInstructorRequest updateInstructorRequest){
+        instructorService.update(updateInstructorRequest);
+    }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable int id){
+        instructorService.delete(id);
+    }
+
 }
+

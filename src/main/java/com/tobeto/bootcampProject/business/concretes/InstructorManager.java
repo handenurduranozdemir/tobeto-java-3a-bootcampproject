@@ -1,27 +1,58 @@
 package com.tobeto.bootcampProject.business.concretes;
 
 import com.tobeto.bootcampProject.business.abstracts.InstructorService;
+import com.tobeto.bootcampProject.business.requests.CreateInstructorRequest;
+import com.tobeto.bootcampProject.business.requests.UpdateInstructorRequest;
+import com.tobeto.bootcampProject.business.responses.GetAllInstructorsResponse;
+import com.tobeto.bootcampProject.business.responses.GetByIdInstructorResponse;
+import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.bootcampProject.dataacces.InstructorRepository;
 import com.tobeto.bootcampProject.entities.Instructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class InstructorManager implements InstructorService {
+    private InstructorRepository instructorRepository;
+    private ModelMapperService modelMapperService;
+    @Override
+    public List<GetAllInstructorsResponse> getAll() {
+        List<Instructor> instructors=instructorRepository.findAll();
+        List<GetAllInstructorsResponse> getAllInstructorResponses=instructors.stream()
+                .map(instructor->modelMapperService.forResponse()
+                        .map(instructor, GetAllInstructorsResponse.class)).collect(Collectors.toList());
 
-    private final InstructorRepository instructorRepository;
-
-    @Autowired
-    public InstructorManager(InstructorRepository instructorRepository) {
-        this.instructorRepository = instructorRepository;
+        return getAllInstructorResponses;
     }
 
     @Override
-    public List<Instructor> getAllInstructors() {
-        return instructorRepository.findAll();
+    public GetByIdInstructorResponse getById(long id) {
+        Instructor instructor=instructorRepository.findById(id).orElseThrow();
+        GetByIdInstructorResponse response=modelMapperService.forResponse()
+                .map(instructor,GetByIdInstructorResponse.class);
+        return response;
     }
 
+    @Override
+    public void add(CreateInstructorRequest createInstructorRequest) {
+        Instructor instructor=modelMapperService.forRequest().map(createInstructorRequest,Instructor.class);//mapped
+        this.instructorRepository.save(instructor);
+    }
 
+    @Override
+    public void update(UpdateInstructorRequest updateInstructorRequest) {
+        Instructor instructor=modelMapperService.forRequest().map(updateInstructorRequest,Instructor.class);//mapped
+        this.instructorRepository.save(instructor);
+    }
+
+    @Override
+    public void delete(long id) {
+        instructorRepository.deleteById(id);
+    }
 }

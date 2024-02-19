@@ -1,4 +1,4 @@
-package com.tobeto.bootcampProject.business.requests.create.employee;
+package com.tobeto.bootcampProject.business.responses;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeRequest {
+public class GetByIdApplicantResponse {
     private int id;
-    private String position;
+    private String about;
+    private String userName;
 }

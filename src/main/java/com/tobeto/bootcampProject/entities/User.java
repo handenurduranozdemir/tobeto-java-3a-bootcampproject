@@ -1,21 +1,19 @@
 package com.tobeto.bootcampProject.entities;
 
+import com.tobeto.bootcampProject.core.entities.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@MappedSuperclass
+@Getter
+@Setter
+@Entity
+@Table(name= "users")
+@EqualsAndHashCode(callSuper = true)
+@Inheritance(strategy = InheritanceType.JOINED)
 
-public class User <T> {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private T id;
+public abstract class User extends BaseEntity<Long> {
 
     @Column(name = "username")
     private String username;

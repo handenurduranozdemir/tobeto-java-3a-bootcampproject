@@ -1,39 +1,44 @@
 package com.tobeto.bootcampProject.webapi;
 
-import com.tobeto.bootcampProject.dataacces.ApplicantRepository;
-import com.tobeto.bootcampProject.entities.Applicant;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.tobeto.bootcampProject.business.abstracts.ApplicantService;
+import com.tobeto.bootcampProject.business.requests.CreateApplicantRequest;
+import com.tobeto.bootcampProject.business.requests.UpdateApplicantRequest;
+import com.tobeto.bootcampProject.business.responses.GetAllApplicantsResponse;
+import com.tobeto.bootcampProject.business.responses.GetByIdApplicantResponse;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/applicants")
+@AllArgsConstructor
 public class ApplicantController {
-    private ApplicantRepository applicantRepository;
-
-    public ApplicantController(ApplicantRepository applicantRepository) {
-        this.applicantRepository =applicantRepository;
-    }
+    private ApplicantService applicantService;
 
     @RequestMapping("/getall")
-    public List<Applicant> findAll()
-    {
-        List<Applicant> applicants = applicantRepository.findAll();
-        return applicants;
+    public List<GetAllApplicantsResponse> findAll() {
+        return applicantService.getAll();
     }
 
+    @GetMapping("/{id}")
+    public GetByIdApplicantResponse getById(@PathVariable Long id) {
+        return applicantService.getById(id);
 
-    @RequestMapping("/save")
-    public Applicant applicant() {
-        Applicant applicant = new Applicant();
-        applicant.setUsername("hande");
-        applicant.setFirstName("hande");
-        applicant.setLastName("duran");
-        applicant.setEmail("hande@");
-        applicant.setAbout("deneme");
-        applicant.setPassword("1234");
-        applicantRepository.save(applicant);
-        return applicant;
     }
+    @PostMapping("/add")
+    @ResponseStatus(code= HttpStatus.CREATED)
+    public  void add(@RequestBody() CreateApplicantRequest applicantRequest){
+        applicantService.add(applicantRequest);
+    }
+    @PutMapping
+    public void update(@RequestBody() UpdateApplicantRequest updateApplicantRequest){
+        applicantService.update(updateApplicantRequest);
+    }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+        applicantService.delete(id);
+    }
+
 }

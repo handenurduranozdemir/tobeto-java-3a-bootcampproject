@@ -1,10 +1,16 @@
 package com.tobeto.bootcampProject.business.abstracts;
 
-import com.tobeto.bootcampProject.entities.Employee;
+import com.tobeto.bootcampProject.business.requests.CreateEmployeeRequest;
+import com.tobeto.bootcampProject.business.requests.UpdateEmployeeRequest;
+import com.tobeto.bootcampProject.business.responses.GetAllEmployeesResponse;
+import com.tobeto.bootcampProject.business.responses.GetByIdEmployeeResponse;
+
 import java.util.List;
 
 public interface EmployeeService {
-
-    List<Employee> getAllEmployees();
-
+    List<GetAllEmployeesResponse> getAll();
+    GetByIdEmployeeResponse getById(Long id);
+    void add(CreateEmployeeRequest employeeRequest);
+    void update(UpdateEmployeeRequest updateEmployeeRequest);
+    void delete(Long id);
 }

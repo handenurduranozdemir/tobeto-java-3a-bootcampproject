@@ -2,7 +2,9 @@ package com.tobeto.bootcampProject.core.utilities.mapping;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
 public class ModelMapperManager  implements ModelMapperService{
 
     private ModelMapper modelMapper;
