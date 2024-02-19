@@ -20,8 +20,8 @@ public class EmployeesController {
     @RequestMapping("/add1")
     public void add() {
         Employee employee = new Employee();
-        employee.setUsername("alpo");
-        employee.setEmail("alpo@gmail.com");
+        employee.setUsername("hande");
+        employee.setEmail("hande@gmail.com");
         employee.setPosition("software developer");
         employeeRepository.save(employee);
     }

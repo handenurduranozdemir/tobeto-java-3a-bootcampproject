@@ -23,14 +23,6 @@ public class ApplicantController {
         return applicants;
     }
 
-    /*@RequestMapping("/save")
-    public void add() {
-        Applicant applicant = new Applicant();
-        applicant.setUsername("handend");
-        applicant.setEmail("hande@gmail.com");
-        applicant.setAbout("hello me");
-        applicantRepository.save(applicant);
-    }*/
 
     @RequestMapping("/save")
     public Applicant applicant() {

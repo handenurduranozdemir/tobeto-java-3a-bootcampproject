@@ -22,9 +22,9 @@ public class InstructorController {
     @RequestMapping("/add2")
     public void add() {
         Instructor instructor = new Instructor();
-        instructor.setUsername("sare");
-        instructor.setEmail("sare@gmail.com");
-        instructor.setCompanyName("sareo");
+        instructor.setUsername("hande");
+        instructor.setEmail("handee@gmail.com");
+        instructor.setCompanyName("handee");
         instructorRepository.save(instructor);
     }
 }
