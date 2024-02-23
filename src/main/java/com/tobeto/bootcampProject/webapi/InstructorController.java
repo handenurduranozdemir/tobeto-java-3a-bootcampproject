@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/Instructors")
+@RequestMapping("/api/instructors")
 public class InstructorController {
 
     private InstructorService instructorService;

@@ -12,32 +12,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/applicants")
+@RequestMapping("/api/applicants")
 @AllArgsConstructor
 public class ApplicantController {
     private ApplicantService applicantService;
 
     @RequestMapping("/getall")
-    public List<GetAllApplicantsResponse> findAll() {
+    public List<GetAllApplicantsResponse> findAll()
+    {
         return applicantService.getAll();
     }
 
     @GetMapping("/{id}")
-    public GetByIdApplicantResponse getById(@PathVariable Long id) {
+    public GetByIdApplicantResponse getById(@PathVariable Long id)
+    {
         return applicantService.getById(id);
-
     }
     @PostMapping("/add")
     @ResponseStatus(code= HttpStatus.CREATED)
-    public  void add(@RequestBody() CreateApplicantRequest applicantRequest){
+    public  void add(@RequestBody() CreateApplicantRequest applicantRequest)
+    {
         applicantService.add(applicantRequest);
     }
     @PutMapping
-    public void update(@RequestBody() UpdateApplicantRequest updateApplicantRequest){
+    public void update(@RequestBody() UpdateApplicantRequest updateApplicantRequest)
+    {
         applicantService.update(updateApplicantRequest);
     }
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id)
+    {
         applicantService.delete(id);
     }
 

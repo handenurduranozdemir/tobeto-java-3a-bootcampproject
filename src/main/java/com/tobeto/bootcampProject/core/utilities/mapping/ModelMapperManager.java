@@ -8,6 +8,11 @@ import org.springframework.context.annotation.Configuration;
 public class ModelMapperManager  implements ModelMapperService{
 
     private ModelMapper modelMapper;
+
+    public ModelMapperManager(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
+
     @Override
     public ModelMapper forRequest() {
         modelMapper.getConfiguration().setAmbiguityIgnored(true).setMatchingStrategy(MatchingStrategies.LOOSE);
