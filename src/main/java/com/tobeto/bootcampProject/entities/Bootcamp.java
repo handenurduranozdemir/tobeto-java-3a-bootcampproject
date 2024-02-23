@@ -1,5 +1,6 @@
 package com.tobeto.bootcampProject.entities;
 
+import com.tobeto.bootcampProject.core.entities.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,19 +15,25 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "Bootcamps")
-public class Bootcamp {
-    @Id
+public class Bootcamp extends BaseEntity<Long> {
+    /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private int id;*/
     @Column(name = "name")
     private String name;
-    @Column(name = "instructor_id")
-    private int instructorId;
+
+    @ManyToOne
+    @JoinColumn(name = "instructor_id")
+    private User instructor;
+
     @Column(name = "start_date")
     private LocalDateTime startDate;
+
     @Column(name = "end_date")
     private LocalDateTime endDate;
-    @Column(name = "bootcamp_state_id")
-    private int bootcampStateId;
+
+    @ManyToOne
+    @JoinColumn(name = "bootcamp_state_id")
+    private BootcampState bootcampState;
 }

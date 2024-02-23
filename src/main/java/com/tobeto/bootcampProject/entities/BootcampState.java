@@ -1,5 +1,6 @@
 package com.tobeto.bootcampProject.entities;
 
+import com.tobeto.bootcampProject.core.entities.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,11 +13,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "Bootcamp_States")
-public class BootcampState {
-    @Id
+public class BootcampState extends BaseEntity<Long> {
+    /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
-    @Column(name = "name")
-    private String name;
+    private long id;*/
+    @Column(name = "state")
+    private boolean state;
 }

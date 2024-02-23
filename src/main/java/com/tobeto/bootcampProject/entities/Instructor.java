@@ -12,7 +12,7 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-@PrimaryKeyJoinColumn(name = "userid")
+@PrimaryKeyJoinColumn(name = "user_id")
 
 public class Instructor extends User {
 
