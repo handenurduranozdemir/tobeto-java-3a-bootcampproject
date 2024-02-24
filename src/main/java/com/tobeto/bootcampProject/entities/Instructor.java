@@ -1,9 +1,6 @@
 package com.tobeto.bootcampProject.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.PrimaryKeyJoinColumn;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @AllArgsConstructor
@@ -15,6 +12,9 @@ import lombok.*;
 @PrimaryKeyJoinColumn(name = "user_id")
 
 public class Instructor extends User {
+    @ManyToOne
+    @JoinColumn(name = "instructor_id")
+    private User instructor;
 
     @Column(name = "companyName")
     private String companyName;

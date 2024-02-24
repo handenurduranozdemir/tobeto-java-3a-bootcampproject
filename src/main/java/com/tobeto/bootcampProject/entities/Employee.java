@@ -1,23 +1,21 @@
 package com.tobeto.bootcampProject.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.PrimaryKeyJoinColumn;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Employees")
-@Data
-@EqualsAndHashCode(callSuper = true)
+@Getter
+@Setter
 @Entity
 @PrimaryKeyJoinColumn(name = "user_id")
 
 public class Employee extends User {
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private User empployee;
+
     @Column(name = "position")
     private String position;
 }
