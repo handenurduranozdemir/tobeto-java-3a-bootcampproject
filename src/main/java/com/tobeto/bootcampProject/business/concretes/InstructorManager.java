@@ -32,7 +32,7 @@ public class InstructorManager implements InstructorService {
     }
 
     @Override
-    public GetByIdInstructorResponse getById(long id) {
+    public GetByIdInstructorResponse getById(int id) {
         Instructor instructor=instructorRepository.findById(id).orElseThrow();
         GetByIdInstructorResponse response=modelMapperService.forResponse()
                 .map(instructor,GetByIdInstructorResponse.class);
@@ -52,7 +52,7 @@ public class InstructorManager implements InstructorService {
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(int id) {
         instructorRepository.deleteById(id);
     }
 }

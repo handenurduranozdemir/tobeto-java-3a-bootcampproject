@@ -21,7 +21,7 @@ public class Application extends BaseEntity<Long> {
     @ManyToOne
     //@Column(name = "applicant_id")
     @JoinColumn(name = "applicant_id")
-    private User applicant;
+    private User application;
 
     @ManyToOne
     //@Column(name = "bootcamp_id")

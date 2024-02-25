@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface InstructorService {
     List<GetAllInstructorsResponse> getAll();
-    GetByIdInstructorResponse getById(long id);
+    GetByIdInstructorResponse getById(int id);
     void add(CreateInstructorRequest createInstructorRequest);
     void update(UpdateInstructorRequest updateInstructorRequest);
-    void delete(long id);
+    void delete(int id);
 }

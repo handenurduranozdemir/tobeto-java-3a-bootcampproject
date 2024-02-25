@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface EmployeeService {
     List<GetAllEmployeesResponse> getAll();
-    GetByIdEmployeeResponse getById(Long id);
+    GetByIdEmployeeResponse getById(int id);
     void add(CreateEmployeeRequest employeeRequest);
     void update(UpdateEmployeeRequest updateEmployeeRequest);
-    void delete(Long id);
+    void delete(int id);
 }

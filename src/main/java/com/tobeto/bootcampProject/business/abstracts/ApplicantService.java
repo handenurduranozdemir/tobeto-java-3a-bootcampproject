@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface ApplicantService {
     List<GetAllApplicantsResponse> getAll();
-    GetByIdApplicantResponse getById(Long id);
+    GetByIdApplicantResponse getById(int id);
     void add(CreateApplicantRequest applicantRequest);
     void update(UpdateApplicantRequest updateApplicantRequest);
-    void delete(Long id);
+    void delete(int id);
 
 }

@@ -23,9 +23,9 @@ public class ApplicantManager implements ApplicantService {
     private ModelMapperService modelMapperService;
     @Override
     public List<GetAllApplicantsResponse> getAll() {
-        List<Applicant> applicants=applicantRepository.findAll();
+        List<Applicant> applicants = applicantRepository.findAll();
 
-        List<GetAllApplicantsResponse> getAllApplicantResponses=applicants.stream()
+        List<GetAllApplicantsResponse> getAllApplicantResponses = applicants.stream()
                 .map(applicant->modelMapperService.forResponse()
                         .map(applicant, GetAllApplicantsResponse.class)).collect(Collectors.toList());
 
@@ -33,27 +33,27 @@ public class ApplicantManager implements ApplicantService {
     }
 
     @Override
-    public GetByIdApplicantResponse getById(Long id) {
-        Applicant applicant=applicantRepository.findById(id).orElseThrow();//eğer id gelmezse orElse olmazsa optinal yazarız
-        GetByIdApplicantResponse response=modelMapperService.forResponse()
+    public GetByIdApplicantResponse getById(int id) {
+        Applicant applicant = applicantRepository.findById(id).orElseThrow();//eğer id gelmezse orElse olmazsa optinal yazarız
+        GetByIdApplicantResponse response = modelMapperService.forResponse()
                 .map(applicant, GetByIdApplicantResponse.class);
         return response;
     }
 
     @Override
     public void add(CreateApplicantRequest applicantRequest) {
-        Applicant applicant=modelMapperService.forRequest().map(applicantRequest,Applicant.class);//mapped
+        Applicant applicant = modelMapperService.forRequest().map(applicantRequest,Applicant.class);
         this.applicantRepository.save(applicant);
     }
 
 
-    public void update(UpdateApplicantRequest updateApplicantRequest) {
-        Applicant applicant=modelMapperService.forRequest().map(updateApplicantRequest,Applicant.class);
+    public void update(UpdateApplicantRequest applicantRequest) {
+        Applicant applicant = modelMapperService.forRequest().map(applicantRequest,Applicant.class);
         applicantRepository.save(applicant);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(int id) {
         applicantRepository.deleteById(id);
     }
 

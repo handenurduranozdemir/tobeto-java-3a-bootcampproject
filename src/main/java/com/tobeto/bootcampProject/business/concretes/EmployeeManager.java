@@ -33,7 +33,7 @@ public class EmployeeManager implements EmployeeService {
     }
 
     @Override
-    public GetByIdEmployeeResponse getById(Long id) {
+    public GetByIdEmployeeResponse getById(int id) {
         Employee employee=employeeRepository.findById(id).orElseThrow();
         GetByIdEmployeeResponse response=modelMapperService.forResponse()
                 .map(employee,GetByIdEmployeeResponse.class);
@@ -53,7 +53,7 @@ public class EmployeeManager implements EmployeeService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(int id) {
         employeeRepository.deleteById(id);
     }
 }

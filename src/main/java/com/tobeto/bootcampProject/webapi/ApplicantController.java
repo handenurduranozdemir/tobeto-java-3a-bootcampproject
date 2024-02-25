@@ -24,7 +24,7 @@ public class ApplicantController {
     }
 
     @GetMapping("/{id}")
-    public GetByIdApplicantResponse getById(@PathVariable Long id)
+    public GetByIdApplicantResponse getById(@PathVariable int id)
     {
         return applicantService.getById(id);
     }

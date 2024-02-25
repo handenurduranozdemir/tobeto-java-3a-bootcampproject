@@ -19,5 +19,5 @@ public class ApplicationState extends BaseEntity<Long> {
     @Column(name = "id")
     private long id;*/
     @Column(name = "state")
-    private boolean state;
+    private int state;
 }
