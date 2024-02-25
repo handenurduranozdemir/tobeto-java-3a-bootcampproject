@@ -40,7 +40,7 @@ public class ApplicantController {
         applicantService.update(updateApplicantRequest);
     }
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id)
+    public void delete(@PathVariable int id)
     {
         applicantService.delete(id);
     }
