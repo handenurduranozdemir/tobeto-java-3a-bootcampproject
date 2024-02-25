@@ -23,7 +23,7 @@ public class EmployeeController {
         return  employeeService.getAll();
     }
     @GetMapping("/{id}")//variable al, pathden okur
-    public GetByIdEmployeeResponse getById(@PathVariable Long id) {
+    public GetByIdEmployeeResponse getById(@PathVariable int id) {
         return employeeService.getById(id);
     }
     @PostMapping("/add")
@@ -36,7 +36,7 @@ public class EmployeeController {
         employeeService.update(updateEmployeeRequest);
     }
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id){
+    public void delete(@PathVariable int id){
         employeeService.delete(id);
     }
 }
