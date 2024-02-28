@@ -1,9 +1,9 @@
 package com.tobeto.bootcampProject.business.abstracts;
 
-import com.tobeto.bootcampProject.business.requests.CreateApplicantRequest;
-import com.tobeto.bootcampProject.business.requests.UpdateApplicantRequest;
-import com.tobeto.bootcampProject.business.responses.GetAllApplicantsResponse;
-import com.tobeto.bootcampProject.business.responses.GetByIdApplicantResponse;
+import com.tobeto.bootcampProject.business.requests.create.CreateApplicantRequest;
+import com.tobeto.bootcampProject.business.requests.update.UpdateApplicantRequest;
+import com.tobeto.bootcampProject.business.responses.get.GetAllApplicantsResponse;
+import com.tobeto.bootcampProject.business.responses.get.GetByIdApplicantResponse;
 
 import java.util.List;
 

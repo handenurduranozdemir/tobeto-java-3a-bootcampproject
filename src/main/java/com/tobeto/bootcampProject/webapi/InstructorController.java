@@ -1,10 +1,10 @@
 package com.tobeto.bootcampProject.webapi;
 
 import com.tobeto.bootcampProject.business.abstracts.InstructorService;
-import com.tobeto.bootcampProject.business.requests.CreateInstructorRequest;
-import com.tobeto.bootcampProject.business.requests.UpdateInstructorRequest;
-import com.tobeto.bootcampProject.business.responses.GetAllInstructorsResponse;
-import com.tobeto.bootcampProject.business.responses.GetByIdInstructorResponse;
+import com.tobeto.bootcampProject.business.requests.create.CreateInstructorRequest;
+import com.tobeto.bootcampProject.business.requests.update.UpdateInstructorRequest;
+import com.tobeto.bootcampProject.business.responses.get.GetAllInstructorsResponse;
+import com.tobeto.bootcampProject.business.responses.get.GetByIdInstructorResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,6 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/api/instructors")
 public class InstructorController {
-
     private InstructorService instructorService;
 
     @RequestMapping("/getall")
@@ -29,7 +28,7 @@ public class InstructorController {
     }
     @PostMapping("/add")
     @ResponseStatus(code= HttpStatus.CREATED)
-    public  void add(@RequestBody() CreateInstructorRequest instructorRequest){
+    public void add(@RequestBody() CreateInstructorRequest instructorRequest){
         instructorService.add(instructorRequest);
     }
     @PutMapping
@@ -42,4 +41,3 @@ public class InstructorController {
     }
 
 }
-

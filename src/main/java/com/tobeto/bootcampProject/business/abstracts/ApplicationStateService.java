@@ -1,9 +1,9 @@
 package com.tobeto.bootcampProject.business.abstracts;
 
-import com.tobeto.bootcampProject.business.requests.CreateApplicationStateRequest;
-import com.tobeto.bootcampProject.business.requests.UpdateApplicationStateRequest;
-import com.tobeto.bootcampProject.business.responses.GetAllApplicationStatesResponse;
-import com.tobeto.bootcampProject.business.responses.GetByIdApplicationStateResponse;
+import com.tobeto.bootcampProject.business.requests.create.CreateApplicationStateRequest;
+import com.tobeto.bootcampProject.business.requests.update.UpdateApplicationStateRequest;
+import com.tobeto.bootcampProject.business.responses.get.GetAllApplicationStatesResponse;
+import com.tobeto.bootcampProject.business.responses.get.GetByIdApplicationStateResponse;
 
 import java.util.List;
 

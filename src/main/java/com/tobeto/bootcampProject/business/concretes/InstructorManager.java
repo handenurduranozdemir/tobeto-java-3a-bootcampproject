@@ -1,10 +1,10 @@
 package com.tobeto.bootcampProject.business.concretes;
 
 import com.tobeto.bootcampProject.business.abstracts.InstructorService;
-import com.tobeto.bootcampProject.business.requests.CreateInstructorRequest;
-import com.tobeto.bootcampProject.business.requests.UpdateInstructorRequest;
-import com.tobeto.bootcampProject.business.responses.GetAllInstructorsResponse;
-import com.tobeto.bootcampProject.business.responses.GetByIdInstructorResponse;
+import com.tobeto.bootcampProject.business.requests.create.CreateInstructorRequest;
+import com.tobeto.bootcampProject.business.requests.update.UpdateInstructorRequest;
+import com.tobeto.bootcampProject.business.responses.get.GetAllInstructorsResponse;
+import com.tobeto.bootcampProject.business.responses.get.GetByIdInstructorResponse;
 import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.bootcampProject.dataacces.InstructorRepository;
 import com.tobeto.bootcampProject.entities.Instructor;

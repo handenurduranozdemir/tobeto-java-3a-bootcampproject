@@ -7,21 +7,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "Applications")
-public class Application extends BaseEntity<Long> {
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;*/
-    @ManyToOne
+public class Application extends BaseEntity<Integer> {
+
+    @ManyToOne //(mappedBy = "applicant")
     //@Column(name = "applicant_id")
     @JoinColumn(name = "applicant_id")
-    private User application;
+    private Applicant applicant;
 
     @ManyToOne
     //@Column(name = "bootcamp_id")
@@ -32,4 +31,7 @@ public class Application extends BaseEntity<Long> {
     //@Column(name = "application_state_id")
     @JoinColumn(name = "application_state_id")
     private ApplicationState applicationState;
+
+
+
 }

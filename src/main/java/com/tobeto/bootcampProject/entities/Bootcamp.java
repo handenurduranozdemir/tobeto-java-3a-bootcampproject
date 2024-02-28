@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "Bootcamps")
-public class Bootcamp extends BaseEntity<Long> {
+public class Bootcamp extends BaseEntity<Integer> {
     /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

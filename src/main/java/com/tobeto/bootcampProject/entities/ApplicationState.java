@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "Application_States")
-public class ApplicationState extends BaseEntity<Long> {
+public class ApplicationState extends BaseEntity<Integer> {
     /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

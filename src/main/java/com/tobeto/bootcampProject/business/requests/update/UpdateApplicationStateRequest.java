@@ -1,4 +1,4 @@
-package com.tobeto.bootcampProject.business.responses;
+package com.tobeto.bootcampProject.business.requests.update;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetAllApplicantsResponse {
+public class UpdateApplicationStateRequest {
     private int id;
-    private String about;
-    private String userName;
+    private int state;
 }

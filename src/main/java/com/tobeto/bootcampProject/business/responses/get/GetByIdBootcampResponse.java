@@ -1,4 +1,4 @@
-package com.tobeto.bootcampProject.business.responses;
+package com.tobeto.bootcampProject.business.responses.get;
 
 public class GetByIdBootcampResponse {
     private int id;

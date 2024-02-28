@@ -1,10 +1,10 @@
 package com.tobeto.bootcampProject.business.concretes;
 
 import com.tobeto.bootcampProject.business.abstracts.ApplicantService;
-import com.tobeto.bootcampProject.business.requests.CreateApplicantRequest;
-import com.tobeto.bootcampProject.business.requests.UpdateApplicantRequest;
-import com.tobeto.bootcampProject.business.responses.GetAllApplicantsResponse;
-import com.tobeto.bootcampProject.business.responses.GetByIdApplicantResponse;
+import com.tobeto.bootcampProject.business.requests.create.CreateApplicantRequest;
+import com.tobeto.bootcampProject.business.requests.update.UpdateApplicantRequest;
+import com.tobeto.bootcampProject.business.responses.get.GetAllApplicantsResponse;
+import com.tobeto.bootcampProject.business.responses.get.GetByIdApplicantResponse;
 import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.bootcampProject.dataacces.ApplicantRepository;
 import com.tobeto.bootcampProject.entities.Applicant;

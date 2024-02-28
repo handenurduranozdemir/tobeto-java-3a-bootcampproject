@@ -15,13 +15,10 @@ import java.util.List;
 
 public class Applicant extends User {
 
-    @ManyToOne
-    @JoinColumn(name = "applicant_id")
-    private User applicant;
 
     @Column(name = "about")
     private String about;
 
-    /*@OneToMany(mappedBy = "applicant")
-    private List<Application> applications;*/
+    @OneToMany(mappedBy = "applicant")
+    private List<Application> applications;
 }

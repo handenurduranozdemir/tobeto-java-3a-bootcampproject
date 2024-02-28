@@ -1,11 +1,10 @@
 package com.tobeto.bootcampProject.business.concretes;
 
 import com.tobeto.bootcampProject.business.abstracts.ApplicationStateService;
-import com.tobeto.bootcampProject.business.requests.CreateApplicationStateRequest;
-import com.tobeto.bootcampProject.business.requests.UpdateApplicationStateRequest;
-import com.tobeto.bootcampProject.business.responses.GetAllApplicationStatesResponse;
-import com.tobeto.bootcampProject.business.responses.GetAllBootcampStatesResponse;
-import com.tobeto.bootcampProject.business.responses.GetByIdApplicationStateResponse;
+import com.tobeto.bootcampProject.business.requests.create.CreateApplicationStateRequest;
+import com.tobeto.bootcampProject.business.requests.update.UpdateApplicationStateRequest;
+import com.tobeto.bootcampProject.business.responses.get.GetAllApplicationStatesResponse;
+import com.tobeto.bootcampProject.business.responses.get.GetByIdApplicationStateResponse;
 import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.bootcampProject.dataacces.ApplicationStateRepository;
 import com.tobeto.bootcampProject.entities.ApplicationState;

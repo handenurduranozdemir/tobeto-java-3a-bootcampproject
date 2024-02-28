@@ -1,15 +1,12 @@
 package com.tobeto.bootcampProject.business.concretes;
 
 import com.tobeto.bootcampProject.business.abstracts.BootcampService;
-import com.tobeto.bootcampProject.business.requests.CreateBootcampRequest;
-import com.tobeto.bootcampProject.business.requests.UpdateBootcampRequest;
-import com.tobeto.bootcampProject.business.responses.GetAllApplicationsResponse;
-import com.tobeto.bootcampProject.business.responses.GetAllBootcampsResponse;
-import com.tobeto.bootcampProject.business.responses.GetByIdApplicationResponse;
-import com.tobeto.bootcampProject.business.responses.GetByIdBootcampResponse;
+import com.tobeto.bootcampProject.business.requests.create.CreateBootcampRequest;
+import com.tobeto.bootcampProject.business.requests.update.UpdateBootcampRequest;
+import com.tobeto.bootcampProject.business.responses.get.GetAllBootcampsResponse;
+import com.tobeto.bootcampProject.business.responses.get.GetByIdBootcampResponse;
 import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.bootcampProject.dataacces.BootcampRepository;
-import com.tobeto.bootcampProject.entities.Application;
 import com.tobeto.bootcampProject.entities.Bootcamp;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

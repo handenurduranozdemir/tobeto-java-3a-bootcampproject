@@ -1,4 +1,4 @@
-package com.tobeto.bootcampProject.business.responses;
+package com.tobeto.bootcampProject.business.responses.get;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetByIdInstructorResponse {
+public class GetAllEmployeesResponse {
     private int id;
-    private String companyName;
+    private String about;
     private String userName;
+    private String position;
 }

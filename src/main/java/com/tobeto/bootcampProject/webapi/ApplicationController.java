@@ -1,7 +1,7 @@
 package com.tobeto.bootcampProject.webapi;
 
 import com.tobeto.bootcampProject.business.abstracts.ApplicationService;
-import com.tobeto.bootcampProject.business.responses.GetAllApplicationsResponse;
+import com.tobeto.bootcampProject.business.responses.get.GetAllApplicationsResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

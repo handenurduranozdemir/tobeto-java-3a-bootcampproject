@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "Bootcamp_States")
-public class BootcampState extends BaseEntity<Long> {
+public class BootcampState extends BaseEntity<Integer> {
     /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

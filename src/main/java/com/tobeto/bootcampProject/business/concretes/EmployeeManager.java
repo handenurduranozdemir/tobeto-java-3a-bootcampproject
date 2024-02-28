@@ -1,10 +1,12 @@
 package com.tobeto.bootcampProject.business.concretes;
 
 import com.tobeto.bootcampProject.business.abstracts.EmployeeService;
-import com.tobeto.bootcampProject.business.requests.CreateEmployeeRequest;
-import com.tobeto.bootcampProject.business.requests.UpdateEmployeeRequest;
-import com.tobeto.bootcampProject.business.responses.GetAllEmployeesResponse;
-import com.tobeto.bootcampProject.business.responses.GetByIdEmployeeResponse;
+import com.tobeto.bootcampProject.business.requests.create.CreateEmployeeRequest;
+import com.tobeto.bootcampProject.business.requests.update.UpdateEmployeeRequest;
+import com.tobeto.bootcampProject.business.responses.get.GetAllEmployeesResponse;
+import com.tobeto.bootcampProject.business.responses.get.GetByIdEmployeeResponse;
+import com.tobeto.bootcampProject.core.results.DataResult;
+import com.tobeto.bootcampProject.core.results.SuccessDataResult;
 import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.bootcampProject.dataacces.EmployeeRepository;
 import com.tobeto.bootcampProject.entities.Employee;
@@ -33,11 +35,11 @@ public class EmployeeManager implements EmployeeService {
     }
 
     @Override
-    public GetByIdEmployeeResponse getById(int id) {
+    public DataResult<GetByIdEmployeeResponse> getById(int id) {
         Employee employee=employeeRepository.findById(id).orElseThrow();
         GetByIdEmployeeResponse response=modelMapperService.forResponse()
                 .map(employee,GetByIdEmployeeResponse.class);
-        return response;
+        return new SuccessDataResult<GetByIdEmployeeResponse>(response, "employee listed.");
     }
 
     @Override

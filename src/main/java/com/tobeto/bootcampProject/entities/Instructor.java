@@ -3,6 +3,8 @@ package com.tobeto.bootcampProject.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Instructors")
@@ -12,10 +14,10 @@ import lombok.*;
 @PrimaryKeyJoinColumn(name = "user_id")
 
 public class Instructor extends User {
-    @ManyToOne
-    @JoinColumn(name = "instructor_id")
-    private User instructor;
 
     @Column(name = "companyName")
     private String companyName;
+
+    @OneToMany(mappedBy = "instructor")
+    private List<Bootcamp> bootcamps;
 }
