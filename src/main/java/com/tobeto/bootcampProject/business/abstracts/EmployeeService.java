@@ -4,6 +4,7 @@ import com.tobeto.bootcampProject.business.requests.create.CreateEmployeeRequest
 import com.tobeto.bootcampProject.business.requests.update.UpdateEmployeeRequest;
 import com.tobeto.bootcampProject.business.responses.get.GetAllEmployeesResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdEmployeeResponse;
+import com.tobeto.bootcampProject.business.responses.update.UpdateEmployeeResponse;
 import com.tobeto.bootcampProject.core.results.DataResult;
 import com.tobeto.bootcampProject.core.results.Result;
 
@@ -13,6 +14,6 @@ public interface EmployeeService {
     DataResult<List<GetAllEmployeesResponse>> getAll();
     DataResult<GetByIdEmployeeResponse> getById(int id);
     void add(CreateEmployeeRequest employeeRequest);
-    DataResult update(UpdateEmployeeRequest updateEmployeeRequest);
+    DataResult<UpdateEmployeeResponse> update(UpdateEmployeeRequest updateEmployeeRequest, int id);
     Result delete(int id);
 }

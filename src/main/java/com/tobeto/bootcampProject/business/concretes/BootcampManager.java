@@ -3,14 +3,27 @@ package com.tobeto.bootcampProject.business.concretes;
 import com.tobeto.bootcampProject.business.abstracts.BootcampService;
 import com.tobeto.bootcampProject.business.requests.create.CreateBootcampRequest;
 import com.tobeto.bootcampProject.business.requests.update.UpdateBootcampRequest;
+import com.tobeto.bootcampProject.business.responses.create.CreateBootcampResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetAllBootcampsResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdBootcampResponse;
+import com.tobeto.bootcampProject.business.responses.update.UpdateBootcampResponse;
+import com.tobeto.bootcampProject.core.results.DataResult;
+import com.tobeto.bootcampProject.core.results.Result;
+import com.tobeto.bootcampProject.core.results.SuccessDataResult;
+import com.tobeto.bootcampProject.core.results.SuccessResult;
 import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
+import com.tobeto.bootcampProject.dataacces.ApplicationRepository;
 import com.tobeto.bootcampProject.dataacces.BootcampRepository;
+import com.tobeto.bootcampProject.dataacces.BootcampStateRepository;
+import com.tobeto.bootcampProject.dataacces.InstructorRepository;
 import com.tobeto.bootcampProject.entities.Bootcamp;
+import com.tobeto.bootcampProject.entities.BootcampState;
+import com.tobeto.bootcampProject.entities.Instructor;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,40 +31,66 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class BootcampManager implements BootcampService {
     private BootcampRepository bootcampRepository;
+    private BootcampStateRepository bootcampStateRepository;
+    private InstructorRepository instructorRepository;
     private ModelMapperService modelMapperService;
-    @Override
-    public List<GetAllBootcampsResponse> getAll() {
-        List<Bootcamp> bootcamps = bootcampRepository.findAll();
+    private final ApplicationRepository applicationRepository;
 
-        List<GetAllBootcampsResponse> getAllBootcampsResponses = bootcamps.stream()
+    @Override
+    public DataResult<List<GetAllBootcampsResponse>> getAll() {
+        List<Bootcamp> bootcamps = bootcampRepository.findAll();
+        List<GetAllBootcampsResponse> responses = bootcamps.stream()
                 .map(bootcamp -> modelMapperService.forResponse()
                         .map(bootcamp, GetAllBootcampsResponse.class)).collect(Collectors.toList());
 
-        return getAllBootcampsResponses;
+        return new SuccessDataResult<List<GetAllBootcampsResponse>>(responses, "All bootcamps are listed");
     }
 
     @Override
-    public GetByIdBootcampResponse getById(int id) {
+    public DataResult<GetByIdBootcampResponse> getById(int id) {
         Bootcamp bootcamp = bootcampRepository.findById(id).orElseThrow();
-        GetByIdBootcampResponse bootcampResponse = modelMapperService.forResponse()
+        GetByIdBootcampResponse response = modelMapperService.forResponse()
                 .map(bootcamp, GetByIdBootcampResponse.class);
-        return bootcampResponse;
+        return new SuccessDataResult<GetByIdBootcampResponse>(response, "Bootcamp is found");
     }
 
     @Override
-    public void add(CreateBootcampRequest bootcampRequest) {
+    public DataResult<CreateBootcampResponse> add(CreateBootcampRequest bootcampRequest) {
         Bootcamp bootcamp = modelMapperService.forRequest().map(bootcampRequest, Bootcamp.class);
-        this.bootcampRepository.save(bootcamp);
-    }
 
-    @Override
-    public void update(UpdateBootcampRequest bootcampRequest) {
-        Bootcamp bootcamp = modelMapperService.forRequest().map(bootcampRequest, Bootcamp.class);
+        BootcampState bootcampState = bootcampStateRepository.findById(bootcampRequest.getBootcampStateId())
+                .orElseThrow(() -> new EntityNotFoundException("BootcampState not found"));
+        bootcamp.setBootcampState(bootcampState);
+
+        Instructor instructor = instructorRepository.findById(bootcampRequest.getInstructorId())
+                .orElseThrow(() -> new EntityNotFoundException("Instructor not found"));
+        bootcamp.setInstructor(instructor);
+
+
         bootcampRepository.save(bootcamp);
+
+        CreateBootcampResponse response = modelMapperService.forResponse().map(bootcamp, CreateBootcampResponse.class);
+        return new SuccessDataResult<CreateBootcampResponse>(response, "Bootcamp is created");
     }
 
     @Override
-    public void delete(int id) {
+    public DataResult<UpdateBootcampResponse> update(UpdateBootcampRequest updateBootcampRequest, int id) {
+        Bootcamp bootcamp = bootcampRepository.findById(id).orElseThrow();
+        Bootcamp updatedBootcamp = modelMapperService.forRequest().map(updateBootcampRequest, Bootcamp.class);
+
+        bootcamp.setId(id);
+        bootcamp.setUpdatedDate(LocalDateTime.now());
+
+        bootcampRepository.save(bootcamp);
+        UpdateBootcampResponse response = modelMapperService.forResponse().map(bootcamp, UpdateBootcampResponse.class);
+
+        return new SuccessDataResult<UpdateBootcampResponse>(response, "Bootcamp is updated");
+    }
+
+    @Override
+    public Result delete(int id) {
         bootcampRepository.deleteById(id);
+
+        return new SuccessResult("Bootcamp is deleted");
     }
 }

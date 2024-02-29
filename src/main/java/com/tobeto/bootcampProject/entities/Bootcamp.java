@@ -23,7 +23,7 @@ public class Bootcamp extends BaseEntity<Integer> {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "instructor_id")
     private User instructor;
 
@@ -33,7 +33,7 @@ public class Bootcamp extends BaseEntity<Integer> {
     @Column(name = "end_date")
     private LocalDateTime endDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "bootcamp_state_id")
     private BootcampState bootcampState;
 }

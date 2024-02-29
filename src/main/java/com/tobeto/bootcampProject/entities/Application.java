@@ -32,6 +32,4 @@ public class Application extends BaseEntity<Integer> {
     @JoinColumn(name = "application_state_id")
     private ApplicationState applicationState;
 
-
-
 }

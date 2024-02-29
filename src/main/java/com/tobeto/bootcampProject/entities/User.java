@@ -13,7 +13,7 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = true)
 @Inheritance(strategy = InheritanceType.JOINED)
 
-public abstract class User extends BaseEntity<Integer> {
+public class User extends BaseEntity<Integer> {
 
     @Column(name = "username")
     private String username;

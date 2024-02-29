@@ -7,6 +7,7 @@ import com.tobeto.bootcampProject.business.responses.get.GetAllInstructorsRespon
 import com.tobeto.bootcampProject.business.responses.get.GetByIdInstructorResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,30 +15,33 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/instructors")
-public class InstructorController {
+public class InstructorController extends BaseController{
     private InstructorService instructorService;
 
     @RequestMapping("/getall")
-    public List<GetAllInstructorsResponse> findAll(){
-        return  instructorService.getAll();
+    public ResponseEntity<?> findAll()
+    {
+        return handleDataResult(instructorService.getAll());
     }
 
     @GetMapping("/{id}")
-    public GetByIdInstructorResponse getById(@PathVariable int id) {
-        return instructorService.getById(id);
+    public ResponseEntity<?> getById(@PathVariable int id)
+    {
+        return handleDataResult(instructorService.getById(id));
     }
     @PostMapping("/add")
     @ResponseStatus(code= HttpStatus.CREATED)
-    public void add(@RequestBody() CreateInstructorRequest instructorRequest){
+    public void add(@RequestBody() CreateInstructorRequest instructorRequest)
+    {
         instructorService.add(instructorRequest);
     }
     @PutMapping
-    public void update(@RequestBody() UpdateInstructorRequest updateInstructorRequest){
-        instructorService.update(updateInstructorRequest);
+    public ResponseEntity<?> update(@RequestBody() UpdateInstructorRequest updateInstructorRequest, int id){
+        return handleDataResult(instructorService.update(updateInstructorRequest, id));
     }
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id){
-        instructorService.delete(id);
+    public ResponseEntity<?> delete(@PathVariable int id){
+        return handleResult(instructorService.delete(id));
     }
 
 }

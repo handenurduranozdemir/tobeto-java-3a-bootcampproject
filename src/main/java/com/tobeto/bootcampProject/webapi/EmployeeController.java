@@ -15,24 +15,29 @@ public class EmployeeController extends BaseController {
     private EmployeeService employeeService;
 
     @RequestMapping("/getall")
-    public ResponseEntity<?> findAll(){
+    public ResponseEntity<?> findAll()
+    {
         return handleDataResult(employeeService.getAll());
     }
-    @GetMapping("/{id}")//variable al, pathden okur
+
+    @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable int id) {
         return handleDataResult(employeeService.getById(id));
     }
+
     @PostMapping("/add")
     @ResponseStatus(code= HttpStatus.CREATED)
     public  void add(@RequestBody() CreateEmployeeRequest employeeRequest){
         employeeService.add(employeeRequest);
     }
-    @PutMapping
-    public void update(@RequestBody() UpdateEmployeeRequest updateEmployeeRequest){
-        employeeService.update(updateEmployeeRequest);
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@RequestBody UpdateEmployeeRequest updateEmployeeRequest, int id){
+        return handleDataResult(employeeService.update(updateEmployeeRequest, id));
     }
+
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id){
-        employeeService.delete(id);
+    public ResponseEntity<?> delete(@PathVariable int id){
+        return handleResult(employeeService.delete(id));
     }
 }

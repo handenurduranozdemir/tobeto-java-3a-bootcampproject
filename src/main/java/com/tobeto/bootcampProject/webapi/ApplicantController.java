@@ -7,6 +7,7 @@ import com.tobeto.bootcampProject.business.responses.get.GetAllApplicantsRespons
 import com.tobeto.bootcampProject.business.responses.get.GetByIdApplicantResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,34 +15,33 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/applicants")
 @AllArgsConstructor
-public class ApplicantController {
+public class ApplicantController extends BaseController{
     private ApplicantService applicantService;
 
     @RequestMapping("/getall")
-    public List<GetAllApplicantsResponse> findAll()
+    public ResponseEntity<?> findAll()
     {
-        return applicantService.getAll();
+        return handleDataResult(applicantService.getAll());
     }
-
     @GetMapping("/{id}")
-    public GetByIdApplicantResponse getById(@PathVariable int id)
+    public ResponseEntity<?> getById(@PathVariable int id)
     {
-        return applicantService.getById(id);
+        return handleDataResult(applicantService.getById(id));
     }
     @PostMapping("/add")
     @ResponseStatus(code= HttpStatus.CREATED)
-    public  void add(@RequestBody() CreateApplicantRequest applicantRequest)
+    public void add(@RequestBody() CreateApplicantRequest applicantRequest)
     {
         applicantService.add(applicantRequest);
     }
     @PutMapping
-    public void update(@RequestBody() UpdateApplicantRequest updateApplicantRequest)
+    public ResponseEntity<?> update(@RequestBody() UpdateApplicantRequest updateApplicantRequest, int id)
     {
-        applicantService.update(updateApplicantRequest);
+        return handleDataResult(applicantService.update(updateApplicantRequest, id));
     }
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id)
+    public ResponseEntity<?> delete(@PathVariable int id)
     {
-        applicantService.delete(id);
+        return handleResult(applicantService.delete(id));
     }
 }
