@@ -1,6 +1,7 @@
 package com.tobeto.bootcampProject.entities;
 
 import com.tobeto.bootcampProject.core.entities.BaseEntity;
+import com.tobeto.bootcampProject.webapi.BaseController;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

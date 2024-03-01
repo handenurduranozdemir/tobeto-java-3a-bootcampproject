@@ -1,4 +1,4 @@
-package com.tobeto.bootcampProject.core.webapi;
+package com.tobeto.bootcampProject.webapi;
 
 import com.tobeto.bootcampProject.business.abstracts.BootcampStateService;
 import com.tobeto.bootcampProject.business.requests.create.CreateBootcampStateRequest;

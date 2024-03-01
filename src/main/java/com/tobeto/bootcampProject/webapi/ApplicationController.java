@@ -1,11 +1,15 @@
-package com.tobeto.bootcampProject.core.webapi;
+package com.tobeto.bootcampProject.webapi;
 
 import com.tobeto.bootcampProject.business.abstracts.ApplicationService;
 import com.tobeto.bootcampProject.business.requests.create.CreateApplicationRequest;
 import com.tobeto.bootcampProject.business.requests.update.UpdateApplicationRequest;
+import com.tobeto.bootcampProject.business.responses.get.GetAllApplicationsResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/applications")
