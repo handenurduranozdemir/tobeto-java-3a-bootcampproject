@@ -24,5 +24,4 @@ public class Result {
     {
         return message;
     }
-
 }

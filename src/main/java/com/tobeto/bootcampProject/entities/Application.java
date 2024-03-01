@@ -7,8 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -28,5 +26,4 @@ public class Application extends BaseEntity<Integer> {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "application_state_id")
     private ApplicationState applicationState;
-
 }

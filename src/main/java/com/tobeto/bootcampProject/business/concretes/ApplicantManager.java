@@ -12,7 +12,6 @@ import com.tobeto.bootcampProject.core.results.SuccessDataResult;
 import com.tobeto.bootcampProject.core.results.SuccessResult;
 import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.bootcampProject.dataacces.ApplicantRepository;
-import com.tobeto.bootcampProject.dataacces.EmployeeRepository;
 import com.tobeto.bootcampProject.entities.Applicant;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -53,7 +52,6 @@ public class ApplicantManager implements ApplicantService {
         Applicant applicant = modelMapperService.forRequest().map(applicantRequest,Applicant.class);
         this.applicantRepository.save(applicant);
     }
-
 
     public DataResult<UpdateApplicantResponse> update(UpdateApplicantRequest applicantRequest, int id) {
         Applicant applicant = applicantRepository.findById(id).orElseThrow();

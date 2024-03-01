@@ -7,7 +7,6 @@ import com.tobeto.bootcampProject.business.responses.create.CreateApplicationRes
 import com.tobeto.bootcampProject.business.responses.get.GetAllApplicationsResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdApplicationResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateApplicationResponse;
-import com.tobeto.bootcampProject.business.responses.update.UpdateApplicationStateResponse;
 import com.tobeto.bootcampProject.core.results.DataResult;
 import com.tobeto.bootcampProject.core.results.Result;
 import com.tobeto.bootcampProject.core.results.SuccessDataResult;
@@ -21,7 +20,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
-
 
 @Service
 @AllArgsConstructor

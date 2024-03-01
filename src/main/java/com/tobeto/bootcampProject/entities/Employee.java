@@ -3,8 +3,6 @@ package com.tobeto.bootcampProject.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Employees")

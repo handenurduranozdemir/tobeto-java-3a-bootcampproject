@@ -3,7 +3,6 @@ package com.tobeto.bootcampProject.business.concretes;
 import com.tobeto.bootcampProject.business.abstracts.BootcampStateService;
 import com.tobeto.bootcampProject.business.requests.create.CreateBootcampStateRequest;
 import com.tobeto.bootcampProject.business.requests.update.UpdateBootcampStateRequest;
-import com.tobeto.bootcampProject.business.responses.create.CreateApplicationStateResponse;
 import com.tobeto.bootcampProject.business.responses.create.CreateBootcampStateResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetAllBootcampStatesResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdBootcampStateResponse;

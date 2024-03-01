@@ -8,8 +8,6 @@ import com.tobeto.bootcampProject.business.responses.update.UpdateInstructorResp
 import com.tobeto.bootcampProject.core.results.DataResult;
 import com.tobeto.bootcampProject.core.results.Result;
 
-
-import javax.xml.crypto.Data;
 import java.util.List;
 
 public interface InstructorService {

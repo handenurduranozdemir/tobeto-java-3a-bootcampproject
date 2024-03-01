@@ -16,5 +16,4 @@ public class BootcampProjectApplication {
 	public ModelMapper getModelMapper(){
 		return  new ModelMapper();
 	}
-
 }

@@ -33,5 +33,4 @@ public abstract class BaseEntity <T>{
     private void preUpdate(){
         this.updatedDate=LocalDateTime.now();
     }
-
 }

@@ -5,7 +5,6 @@ import com.tobeto.bootcampProject.business.requests.create.CreateInstructorReque
 import com.tobeto.bootcampProject.business.requests.update.UpdateInstructorRequest;
 import com.tobeto.bootcampProject.business.responses.get.GetAllInstructorsResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdInstructorResponse;
-import com.tobeto.bootcampProject.business.responses.update.UpdateEmployeeResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateInstructorResponse;
 import com.tobeto.bootcampProject.core.results.DataResult;
 import com.tobeto.bootcampProject.core.results.Result;
