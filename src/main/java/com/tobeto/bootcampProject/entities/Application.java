@@ -17,15 +17,15 @@ import java.util.List;
 @Table(name = "Applications")
 public class Application extends BaseEntity<Integer> {
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "applicant_id")
     private Applicant applicant;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "bootcamp_id")
     private Bootcamp bootcamp;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "application_state_id")
     private ApplicationState applicationState;
 
