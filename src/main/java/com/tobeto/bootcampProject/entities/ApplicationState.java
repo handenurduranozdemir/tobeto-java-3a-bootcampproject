@@ -14,10 +14,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "Application_States")
 public class ApplicationState extends BaseEntity<Integer> {
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;*/
+
     @Column(name = "state")
     private int state;
 }

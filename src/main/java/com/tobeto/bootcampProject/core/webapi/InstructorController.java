@@ -1,16 +1,12 @@
-package com.tobeto.bootcampProject.webapi;
+package com.tobeto.bootcampProject.core.webapi;
 
 import com.tobeto.bootcampProject.business.abstracts.InstructorService;
 import com.tobeto.bootcampProject.business.requests.create.CreateInstructorRequest;
 import com.tobeto.bootcampProject.business.requests.update.UpdateInstructorRequest;
-import com.tobeto.bootcampProject.business.responses.get.GetAllInstructorsResponse;
-import com.tobeto.bootcampProject.business.responses.get.GetByIdInstructorResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @AllArgsConstructor

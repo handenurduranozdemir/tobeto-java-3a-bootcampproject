@@ -1,4 +1,4 @@
-package com.tobeto.bootcampProject.webapi;
+package com.tobeto.bootcampProject.core.webapi;
 
 import com.tobeto.bootcampProject.core.results.DataResult;
 import com.tobeto.bootcampProject.core.results.Result;
