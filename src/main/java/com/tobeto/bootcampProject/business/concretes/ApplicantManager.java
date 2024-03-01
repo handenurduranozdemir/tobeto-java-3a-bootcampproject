@@ -4,10 +4,8 @@ import com.tobeto.bootcampProject.business.abstracts.ApplicantService;
 import com.tobeto.bootcampProject.business.requests.create.CreateApplicantRequest;
 import com.tobeto.bootcampProject.business.requests.update.UpdateApplicantRequest;
 import com.tobeto.bootcampProject.business.responses.get.GetAllApplicantsResponse;
-import com.tobeto.bootcampProject.business.responses.get.GetAllEmployeesResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdApplicantResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateApplicantResponse;
-import com.tobeto.bootcampProject.business.responses.update.UpdateEmployeeResponse;
 import com.tobeto.bootcampProject.core.results.DataResult;
 import com.tobeto.bootcampProject.core.results.Result;
 import com.tobeto.bootcampProject.core.results.SuccessDataResult;
@@ -30,7 +28,6 @@ public class ApplicantManager implements ApplicantService {
 
     private ApplicantRepository applicantRepository;
     private ModelMapperService modelMapperService;
-    private final EmployeeRepository employeeRepository;
 
     @Override
     public DataResult<List<GetAllApplicantsResponse>> getAll() {

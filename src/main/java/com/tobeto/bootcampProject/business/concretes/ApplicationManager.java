@@ -69,8 +69,8 @@ public class ApplicationManager implements ApplicationService {
         application.setApplicant(updatedApplication.getApplicant());
         application.setBootcamp(updatedApplication.getBootcamp());
         application.setApplicationState(updatedApplication.getApplicationState());
-
         applicationRepository.save(application);
+
         UpdateApplicationResponse response = modelMapperService.forResponse().map(application, UpdateApplicationResponse.class);
 
         return new SuccessDataResult<UpdateApplicationResponse>(response, "Application is updated");
