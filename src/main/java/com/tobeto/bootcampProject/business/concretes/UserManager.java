@@ -8,7 +8,7 @@ import com.tobeto.bootcampProject.core.results.DataResult;
 import com.tobeto.bootcampProject.core.results.Result;
 import com.tobeto.bootcampProject.core.results.SuccessDataResult;
 import com.tobeto.bootcampProject.core.results.SuccessResult;
-import com.tobeto.bootcampProject.core.results.mapping.ModelMapperService;
+import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.bootcampProject.dataacces.UserRepository;
 import com.tobeto.bootcampProject.entities.User;
 import lombok.AllArgsConstructor;
