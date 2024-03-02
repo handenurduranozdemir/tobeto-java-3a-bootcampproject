@@ -29,8 +29,8 @@ public class UserController extends BaseController {
         return handleDataResult(userService.getById(id));
     }
 
-    /*@DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(int id){
-        return handleResult(userService.delete(id);
-    }*/
+        return handleResult(userService.delete(id));
+    }
 }

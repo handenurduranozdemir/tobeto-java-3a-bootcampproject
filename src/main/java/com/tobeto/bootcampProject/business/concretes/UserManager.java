@@ -5,8 +5,10 @@ import com.tobeto.bootcampProject.business.responses.get.GetAllUserResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByEmailUserResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdUserResponse;
 import com.tobeto.bootcampProject.core.results.DataResult;
+import com.tobeto.bootcampProject.core.results.Result;
 import com.tobeto.bootcampProject.core.results.SuccessDataResult;
-import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
+import com.tobeto.bootcampProject.core.results.SuccessResult;
+import com.tobeto.bootcampProject.core.results.mapping.ModelMapperService;
 import com.tobeto.bootcampProject.dataacces.UserRepository;
 import com.tobeto.bootcampProject.entities.User;
 import lombok.AllArgsConstructor;
@@ -43,5 +45,11 @@ public class UserManager implements UserService {
         User user = userRepository.findById(id);
         GetByIdUserResponse response = modelMapperService.forResponse().map(user, GetByIdUserResponse.class);
         return new SuccessDataResult<GetByIdUserResponse>(response, "User is listed by id");
+    }
+
+    @Override
+    public Result delete(int id) {
+        userRepository.deleteById(id);
+        return new SuccessResult("User is deleted");
     }
 }
