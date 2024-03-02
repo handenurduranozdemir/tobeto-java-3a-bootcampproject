@@ -30,7 +30,7 @@ public class BlacklistController extends BaseController{
 
     @PutMapping("/{id}")
     public ResponseEntity<?> update(UpdateBlacklistRequest blacklistRequest, int id){
-        return handleDataResult(blacklistService.update(blacklistRequest, id));
+        return handleDataResult(blacklistService.update(blacklistRequest));
     }
 
     @DeleteMapping("/{id}")

@@ -58,11 +58,10 @@ public class ApplicationManager implements ApplicationService {
     }
 
     @Override
-    public DataResult<UpdateApplicationResponse> update(UpdateApplicationRequest applicationRequest, int id) {
-        Application application = applicationRepository.findById(id).orElseThrow();
+    public DataResult<UpdateApplicationResponse> update(UpdateApplicationRequest applicationRequest) {
+        Application application = applicationRepository.findById(applicationRequest.getId()).orElseThrow();
         Application updatedApplication = modelMapperService.forRequest().map(applicationRequest, Application.class);
 
-        application.setId(id);
         application.setUpdatedDate(LocalDateTime.now());
         application.setApplicant(updatedApplication.getApplicant());
         application.setBootcamp(updatedApplication.getBootcamp());

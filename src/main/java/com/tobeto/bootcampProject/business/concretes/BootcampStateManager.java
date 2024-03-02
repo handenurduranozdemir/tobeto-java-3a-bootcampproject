@@ -59,12 +59,11 @@ public class BootcampStateManager implements BootcampStateService {
     }
 
     @Override
-    public DataResult<UpdateBootcampStateResponse> update(UpdateBootcampStateRequest bootcampStateRequest, int id) {
-        BootcampState bootcampState = bootcampStateRepository.findById(id).orElseThrow();
+    public DataResult<UpdateBootcampStateResponse> update(UpdateBootcampStateRequest bootcampStateRequest) {
+        BootcampState bootcampState = bootcampStateRepository.findById(bootcampStateRequest.getId()).orElseThrow();
         BootcampState updatedBootcampState = modelMapperService.forRequest().map(bootcampStateRequest,BootcampState.class);
 
         bootcampState.setUpdatedDate(LocalDateTime.now());
-        bootcampState.setId(id);
         bootcampStateRepository.save(bootcampState);
 
         UpdateBootcampStateResponse response = modelMapperService.forResponse().map(bootcampState, UpdateBootcampStateResponse.class);

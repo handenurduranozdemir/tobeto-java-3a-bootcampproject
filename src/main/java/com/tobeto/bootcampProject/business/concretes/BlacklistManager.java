@@ -17,7 +17,7 @@ import com.tobeto.bootcampProject.entities.Blacklist;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,19 +50,18 @@ public class BlacklistManager implements BlacklistService {
         Blacklist blacklist = modelMapperService.forRequest().map(blacklistRequest, Blacklist.class);
         blacklistRepository.save(blacklist);
 
-        blacklist.setDate(LocalDateTime.now());
+        //blacklist.setDate(LocalDateTime.now());
 
         CreateBlacklistResponse response = modelMapperService.forResponse().map(blacklist, CreateBlacklistResponse.class);
         return new SuccessDataResult<CreateBlacklistResponse>(response, "Applicant is added to blacklist");
     }
 
     @Override
-    public DataResult<UpdateBlacklistResponse> update(UpdateBlacklistRequest blacklistRequest, int id) {
-        Blacklist blacklist = blacklistRepository.findById(id).orElseThrow();
+    public DataResult<UpdateBlacklistResponse> update(UpdateBlacklistRequest blacklistRequest) {
+        Blacklist blacklist = blacklistRepository.findById(blacklistRequest.getId()).orElseThrow();
         Blacklist updatedBlacklist = modelMapperService.forRequest().map(blacklistRequest,Blacklist.class);
 
-        blacklist.setId(id);
-        blacklist.setDate(LocalDateTime.now());
+        blacklist.setDate(LocalDate.now());
         blacklist.setReason(updatedBlacklist.getReason());
         blacklist.setApplicant(updatedBlacklist.getApplicant());
         blacklist.setDate(updatedBlacklist.getDate());

@@ -14,7 +14,7 @@ public interface ApplicantService {
     DataResult<List<GetAllApplicantsResponse>> getAll();
     DataResult<GetByIdApplicantResponse> getById(int id);
     void add(CreateApplicantRequest applicantRequest);
-    DataResult<UpdateApplicantResponse> update(UpdateApplicantRequest updateApplicantRequest, int id);
+    DataResult<UpdateApplicantResponse> update(UpdateApplicantRequest updateApplicantRequest);
     Result delete(int id);
 
 }

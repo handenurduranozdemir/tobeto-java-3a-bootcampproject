@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateInstructorRequest {
+    private int id;
     private String username;
     private String firstName;
     private String lastName;
     private String companyName;
-    private String email;
 }

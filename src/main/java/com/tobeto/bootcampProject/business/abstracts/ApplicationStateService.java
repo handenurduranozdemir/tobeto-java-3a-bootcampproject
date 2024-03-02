@@ -15,6 +15,6 @@ public interface ApplicationStateService {
     DataResult<List<GetAllApplicationStatesResponse>> getAll();
     DataResult<GetByIdApplicationStateResponse> getById(int id);
     DataResult<CreateApplicationStateResponse> add(CreateApplicationStateRequest applicationStateRequest);
-    DataResult<UpdateApplicationStateResponse> update(UpdateApplicationStateRequest applicationStateRequest, int id);
+    DataResult<UpdateApplicationStateResponse> update(UpdateApplicationStateRequest applicationStateRequest);
     Result delete(int id);
 }

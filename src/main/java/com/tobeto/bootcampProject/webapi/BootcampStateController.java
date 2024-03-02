@@ -29,8 +29,8 @@ public class BootcampStateController extends BaseController{
     }
 
     @PutMapping("/{id}")
-     public ResponseEntity<?> update(UpdateBootcampStateRequest bootcampStateRequest, int id) {
-        return handleDataResult(bootcampStateService.update(bootcampStateRequest, id));
+     public ResponseEntity<?> update(UpdateBootcampStateRequest bootcampStateRequest) {
+        return handleDataResult(bootcampStateService.update(bootcampStateRequest));
     }
 
     @DeleteMapping("/{id}")

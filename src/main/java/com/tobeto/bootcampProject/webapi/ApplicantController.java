@@ -8,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/applicants")
 @AllArgsConstructor
@@ -33,9 +31,9 @@ public class ApplicantController extends BaseController{
         applicantService.add(applicantRequest);
     }
     @PutMapping
-    public ResponseEntity<?> update(@RequestBody() UpdateApplicantRequest updateApplicantRequest, int id)
+    public ResponseEntity<?> update(@RequestBody() UpdateApplicantRequest updateApplicantRequest)
     {
-        return handleDataResult(applicantService.update(updateApplicantRequest, id));
+        return handleDataResult(applicantService.update(updateApplicantRequest));
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable int id)

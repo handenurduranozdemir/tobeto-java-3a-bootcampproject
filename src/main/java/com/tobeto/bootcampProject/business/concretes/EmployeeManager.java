@@ -54,11 +54,10 @@ public class EmployeeManager implements EmployeeService {
     }
 
     @Override
-    public DataResult<UpdateEmployeeResponse> update(UpdateEmployeeRequest updateEmployeeRequest, int id) {
-        Employee employee = employeeRepository.findById(id).orElseThrow();
-        Employee updatedEmployee=modelMapperService.forRequest().map(updateEmployeeRequest,Employee.class);
+    public DataResult<UpdateEmployeeResponse> update(UpdateEmployeeRequest employeeRequest) {
+        Employee employee = employeeRepository.findById(employeeRequest.getId()).orElseThrow();
+        Employee updatedEmployee=modelMapperService.forRequest().map(employeeRequest,Employee.class);
 
-        employee.setId(id);
         employee.setUpdatedDate(LocalDateTime.now());
         employee.setFirstName(updatedEmployee.getFirstName());
         employee.setLastName(updatedEmployee.getLastName());

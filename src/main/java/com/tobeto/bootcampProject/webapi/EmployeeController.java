@@ -32,8 +32,8 @@ public class EmployeeController extends BaseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody UpdateEmployeeRequest updateEmployeeRequest, int id){
-        return handleDataResult(employeeService.update(updateEmployeeRequest, id));
+    public ResponseEntity<?> update(@RequestBody UpdateEmployeeRequest updateEmployeeRequest){
+        return handleDataResult(employeeService.update(updateEmployeeRequest));
     }
 
     @DeleteMapping("/{id}")

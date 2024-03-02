@@ -25,8 +25,8 @@ public class ApplicationStateController extends BaseController{
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(UpdateApplicationStateRequest applicationStateRequest, int id){
-        return handleDataResult(applicationStateService.update(applicationStateRequest, id));
+    public ResponseEntity<?> update(UpdateApplicationStateRequest applicationStateRequest){
+        return handleDataResult(applicationStateService.update(applicationStateRequest));
     }
 
     @GetMapping("/{id}")

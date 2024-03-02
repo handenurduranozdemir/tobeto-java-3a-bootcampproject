@@ -15,6 +15,6 @@ public interface BootcampService {
     DataResult<List<GetAllBootcampsResponse>> getAll();
     DataResult<GetByIdBootcampResponse> getById(int id);
     DataResult<CreateBootcampResponse> add(CreateBootcampRequest bootcampRequest);
-    DataResult<UpdateBootcampResponse> update(UpdateBootcampRequest bootcampRequest, int id);
+    DataResult<UpdateBootcampResponse> update(UpdateBootcampRequest bootcampRequest);
     Result delete(int id);
 }

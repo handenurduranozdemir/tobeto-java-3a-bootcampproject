@@ -29,8 +29,8 @@ public class ApplicationController extends BaseController {
         return handleDataResult(applicationService.getByID(id));
     }
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(UpdateApplicationRequest applicationRequest, int id) {
-        return handleDataResult(applicationService.update(applicationRequest,id));
+    public ResponseEntity<?> update(UpdateApplicationRequest applicationRequest) {
+        return handleDataResult(applicationService.update(applicationRequest));
     }
 
     @DeleteMapping("/{id}")

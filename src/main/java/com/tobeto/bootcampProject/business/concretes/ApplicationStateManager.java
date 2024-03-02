@@ -57,11 +57,10 @@ public class ApplicationStateManager implements ApplicationStateService {
     }
 
     @Override
-    public DataResult<UpdateApplicationStateResponse> update(UpdateApplicationStateRequest updateApplicationStateRequest,int id) {
-        ApplicationState applicationState = applicationStateRepository.findById(id).orElseThrow();
-        ApplicationState updatedApplicationState = modelMapperService.forRequest().map(updateApplicationStateRequest, ApplicationState.class);
+    public DataResult<UpdateApplicationStateResponse> update(UpdateApplicationStateRequest applicationStateRequest) {
+        ApplicationState applicationState = applicationStateRepository.findById(applicationStateRequest.getId()).orElseThrow();
+        ApplicationState updatedApplicationState = modelMapperService.forRequest().map(applicationStateRequest, ApplicationState.class);
 
-        applicationState.setId(id);
         applicationState.setUpdatedDate(LocalDateTime.now());
         applicationStateRepository.save(applicationState);
 

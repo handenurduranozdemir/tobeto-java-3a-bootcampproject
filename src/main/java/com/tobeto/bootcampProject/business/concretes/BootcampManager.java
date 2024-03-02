@@ -66,7 +66,6 @@ public class BootcampManager implements BootcampService {
                 .orElseThrow(() -> new EntityNotFoundException("Instructor not found"));
         bootcamp.setInstructor(instructor);
 
-
         bootcampRepository.save(bootcamp);
 
         CreateBootcampResponse response = modelMapperService.forResponse().map(bootcamp, CreateBootcampResponse.class);
@@ -74,11 +73,10 @@ public class BootcampManager implements BootcampService {
     }
 
     @Override
-    public DataResult<UpdateBootcampResponse> update(UpdateBootcampRequest updateBootcampRequest, int id) {
-        Bootcamp bootcamp = bootcampRepository.findById(id).orElseThrow();
-        Bootcamp updatedBootcamp = modelMapperService.forRequest().map(updateBootcampRequest, Bootcamp.class);
+    public DataResult<UpdateBootcampResponse> update(UpdateBootcampRequest bootcampRequest) {
+        Bootcamp bootcamp = bootcampRepository.findById(bootcampRequest.getId()).orElseThrow();
+        Bootcamp updatedBootcamp = modelMapperService.forRequest().map(bootcampRequest, Bootcamp.class);
 
-        bootcamp.setId(id);
         bootcamp.setUpdatedDate(LocalDateTime.now());
 
         bootcampRepository.save(bootcamp);

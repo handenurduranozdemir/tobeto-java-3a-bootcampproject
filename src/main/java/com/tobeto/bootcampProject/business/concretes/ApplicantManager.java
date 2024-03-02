@@ -53,11 +53,10 @@ public class ApplicantManager implements ApplicantService {
         this.applicantRepository.save(applicant);
     }
 
-    public DataResult<UpdateApplicantResponse> update(UpdateApplicantRequest applicantRequest, int id) {
-        Applicant applicant = applicantRepository.findById(id).orElseThrow();
+    public DataResult<UpdateApplicantResponse> update(UpdateApplicantRequest applicantRequest) {
+        Applicant applicant = applicantRepository.findById(applicantRequest.getId()).orElseThrow();
         Applicant updatedApplicant = modelMapperService.forRequest().map(applicantRequest,Applicant.class);
 
-        applicant.setId(id);
         applicant.setUpdatedDate(LocalDateTime.now());
         applicant.setFirstName(updatedApplicant.getFirstName());
         applicant.setLastName(updatedApplicant.getLastName());

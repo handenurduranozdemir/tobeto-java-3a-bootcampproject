@@ -32,8 +32,8 @@ public class InstructorController extends BaseController{
         instructorService.add(instructorRequest);
     }
     @PutMapping
-    public ResponseEntity<?> update(@RequestBody() UpdateInstructorRequest updateInstructorRequest, int id){
-        return handleDataResult(instructorService.update(updateInstructorRequest, id));
+    public ResponseEntity<?> update(@RequestBody() UpdateInstructorRequest updateInstructorRequest){
+        return handleDataResult(instructorService.update(updateInstructorRequest));
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable int id){

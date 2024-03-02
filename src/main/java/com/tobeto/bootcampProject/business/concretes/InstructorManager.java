@@ -51,11 +51,10 @@ public class InstructorManager implements InstructorService {
     }
 
     @Override
-    public DataResult<UpdateInstructorResponse> update(UpdateInstructorRequest updateInstructorRequest, int id) {
-        Instructor instructor = instructorRepository.findById(id).orElseThrow();
-        Instructor updatedInstructor=modelMapperService.forRequest().map(updateInstructorRequest,Instructor.class);//mapped
+    public DataResult<UpdateInstructorResponse> update(UpdateInstructorRequest instructorRequest) {
+        Instructor instructor = instructorRepository.findById(instructorRequest.getId()).orElseThrow();
+        Instructor updatedInstructor=modelMapperService.forRequest().map(instructorRequest,Instructor.class);//mapped
 
-        instructor.setId(id);
         instructor.setUpdatedDate(LocalDateTime.now());
         instructor.setFirstName(updatedInstructor.getFirstName());
         instructor.setLastName(updatedInstructor.getLastName());
