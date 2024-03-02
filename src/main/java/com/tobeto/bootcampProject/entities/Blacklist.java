@@ -7,7 +7,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 
 @Data
 @Entity
@@ -15,14 +16,14 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "Blacklists")
+@PrimaryKeyJoinColumn(name = "user_id")
 public class Blacklist extends BaseEntity<Integer> {
     @Column(name = "reason")
     private String reason;
 
     @Column(name = "date")
-    private LocalDateTime date;
+    private LocalDate date;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "applicant_id")
+    @OneToOne(cascade = CascadeType.MERGE)
     private Applicant applicant;
 }
