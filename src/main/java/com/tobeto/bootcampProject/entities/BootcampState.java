@@ -15,6 +15,9 @@ import lombok.Setter;
 @Table(name = "Bootcamp_States")
 public class BootcampState extends BaseEntity<Integer> {
 
+    @ManyToOne
+    private Bootcamp bootcamp;
+
     @Column(name = "state")
     private int state;
 }
