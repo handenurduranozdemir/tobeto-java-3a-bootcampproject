@@ -1,9 +1,9 @@
 package com.tobeto.bootcampProject.business.responses.delete;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class DeleteBlacklistResponse { private int id;
     private String reason;
-    private LocalDateTime date;
+    private LocalDate date;
     private int applicant_id;
 }
