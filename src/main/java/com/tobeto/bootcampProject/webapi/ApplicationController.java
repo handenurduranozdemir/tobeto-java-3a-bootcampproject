@@ -7,8 +7,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/applications")
 @AllArgsConstructor
@@ -36,7 +34,7 @@ public class ApplicationController extends BaseController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(int id){
+    public ResponseEntity<?> delete(@PathVariable int id){
         return handleResult(applicationService.delete(id));
     }
 }

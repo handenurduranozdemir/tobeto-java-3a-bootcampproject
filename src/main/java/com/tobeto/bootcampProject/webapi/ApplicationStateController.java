@@ -35,7 +35,7 @@ public class ApplicationStateController extends BaseController{
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(int id){
+    public ResponseEntity<?> delete(@PathVariable int id){
         return handleResult(applicationStateService.delete(id));
     }
 }

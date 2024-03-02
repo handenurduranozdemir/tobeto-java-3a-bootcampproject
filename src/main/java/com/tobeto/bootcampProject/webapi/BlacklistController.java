@@ -34,7 +34,7 @@ public class BlacklistController extends BaseController{
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(int id){
+    public ResponseEntity<?> delete(@PathVariable int id){
         return handleResult(blacklistService.delete(id));
     }
 }
