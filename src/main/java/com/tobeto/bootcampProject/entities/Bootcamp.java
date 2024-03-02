@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -16,10 +16,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "Bootcamps")
 public class Bootcamp extends BaseEntity<Integer> {
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;*/
+
     @Column(name = "name")
     private String name;
 
@@ -28,10 +25,10 @@ public class Bootcamp extends BaseEntity<Integer> {
     private User instructor;
 
     @Column(name = "start_date")
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date")
-    private LocalDateTime endDate;
+    private LocalDate endDate;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "bootcamp_state_id")
