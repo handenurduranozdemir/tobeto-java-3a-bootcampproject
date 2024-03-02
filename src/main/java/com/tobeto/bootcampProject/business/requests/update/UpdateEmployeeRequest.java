@@ -12,4 +12,7 @@ public class UpdateEmployeeRequest {
     private String firstName;
     private String lastName;
     private String position;
+    private String dateOfBirth;
+    private String nationalIdentity;
+    private String email;
 }

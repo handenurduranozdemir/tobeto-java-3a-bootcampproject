@@ -13,4 +13,5 @@ public class CreateEmployeeResponse {
     private String username;
     private String firstName;
     private String lastName;
+    private String email;
 }

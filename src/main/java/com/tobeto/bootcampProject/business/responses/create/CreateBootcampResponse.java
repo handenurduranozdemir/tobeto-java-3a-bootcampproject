@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -12,9 +13,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class CreateBootcampResponse {
     private int id;
-    private int instructor_id;
+    private int instructorId;
     private String name;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
-    private BootcampState bootcampState;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private int bootcampStateId;
 }
