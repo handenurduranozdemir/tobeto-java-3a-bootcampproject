@@ -59,12 +59,18 @@ public class EmployeeManager implements EmployeeService {
         Employee updatedEmployee=modelMapperService.forRequest().map(employeeRequest,Employee.class);
 
         employee.setUpdatedDate(LocalDateTime.now());
-        employee.setFirstName(updatedEmployee.getFirstName());
-        employee.setLastName(updatedEmployee.getLastName());
-        employee.setUsername(updatedEmployee.getUsername());
-        employee.setNationalIdentity(updatedEmployee.getNationalIdentity());
-        employee.setDateOfBirth(updatedEmployee.getDateOfBirth());
-        employee.setPosition(updatedEmployee.getPosition());
+        employee.setFirstName(updatedEmployee.getFirstName() !=
+                null ? updatedEmployee.getFirstName() : employee.getFirstName());
+        employee.setLastName(updatedEmployee.getLastName() !=
+                null ? updatedEmployee.getLastName() : employee.getLastName());
+        employee.setUsername(updatedEmployee.getUsername() !=
+                null ? updatedEmployee.getUsername() : employee.getUsername());
+        employee.setNationalIdentity(updatedEmployee.getNationalIdentity() !=
+                null ? updatedEmployee.getNationalIdentity() : employee.getNationalIdentity());
+        employee.setDateOfBirth(updatedEmployee.getDateOfBirth() !=
+                null ? updatedEmployee.getDateOfBirth() : employee.getDateOfBirth());
+        employee.setPosition(updatedEmployee.getPosition() !=
+                null ? updatedEmployee.getPosition() : employee.getPosition());
 
         this.employeeRepository.save(employee);
         UpdateEmployeeResponse response = modelMapperService.forResponse().map(employee, UpdateEmployeeResponse.class);

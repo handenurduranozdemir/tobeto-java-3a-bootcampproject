@@ -78,6 +78,16 @@ public class BootcampManager implements BootcampService {
         Bootcamp updatedBootcamp = modelMapperService.forRequest().map(bootcampRequest, Bootcamp.class);
 
         bootcamp.setUpdatedDate(LocalDateTime.now());
+        bootcamp.setInstructor(updatedBootcamp.getInstructor() !=
+                null ? updatedBootcamp.getInstructor() : bootcamp.getInstructor());
+        bootcamp.setBootcampState(updatedBootcamp.getBootcampState() !=
+                null ? updatedBootcamp.getBootcampState() : bootcamp.getBootcampState());
+        bootcamp.setName(updatedBootcamp.getName() !=
+                null ? updatedBootcamp.getName() : bootcamp.getName());
+        bootcamp.setEndDate(updatedBootcamp.getEndDate() !=
+                null ? updatedBootcamp.getEndDate() : bootcamp.getEndDate());
+        bootcamp.setStartDate(updatedBootcamp.getStartDate() !=
+                null ? updatedBootcamp.getStartDate() : bootcamp.getStartDate());
 
         bootcampRepository.save(bootcamp);
         UpdateBootcampResponse response = modelMapperService.forResponse().map(bootcamp, UpdateBootcampResponse.class);

@@ -49,25 +49,35 @@ public class ApplicantManager implements ApplicantService {
 
     @Override
     public void add(CreateApplicantRequest applicantRequest) {
-        Applicant applicant = modelMapperService.forRequest().map(applicantRequest,Applicant.class);
+        Applicant applicant = modelMapperService.forRequest()
+                .map(applicantRequest,Applicant.class);
         this.applicantRepository.save(applicant);
     }
 
     public DataResult<UpdateApplicantResponse> update(UpdateApplicantRequest applicantRequest) {
         Applicant applicant = applicantRepository.findById(applicantRequest.getId()).orElseThrow();
-        Applicant updatedApplicant = modelMapperService.forRequest().map(applicantRequest,Applicant.class);
+        Applicant updatedApplicant = modelMapperService.forRequest()
+                .map(applicantRequest,Applicant.class);
 
         applicant.setUpdatedDate(LocalDateTime.now());
-        applicant.setFirstName(updatedApplicant.getFirstName());
-        applicant.setLastName(updatedApplicant.getLastName());
-        applicant.setUsername(updatedApplicant.getUsername());
-        applicant.setNationalIdentity(updatedApplicant.getNationalIdentity());
-        applicant.setDateOfBirth(updatedApplicant.getDateOfBirth());
-        applicant.setEmail(updatedApplicant.getEmail());
-        applicant.setAbout(updatedApplicant.getAbout());
+        applicant.setFirstName(updatedApplicant.getFirstName() !=
+                null ? updatedApplicant.getFirstName() : applicant.getFirstName());
+        applicant.setLastName(updatedApplicant.getLastName() !=
+                null ? updatedApplicant.getLastName() : applicant.getLastName());
+        applicant.setUsername(updatedApplicant.getUsername() !=
+                null ? updatedApplicant.getUsername() : applicant.getUsername());
+        applicant.setNationalIdentity(updatedApplicant.getNationalIdentity() !=
+                null ? updatedApplicant.getNationalIdentity() : applicant.getNationalIdentity());
+        applicant.setDateOfBirth(updatedApplicant.getDateOfBirth() !=
+                null ? updatedApplicant.getDateOfBirth() : applicant.getDateOfBirth());
+        applicant.setEmail(updatedApplicant.getEmail() !=
+                null ? updatedApplicant.getEmail() : applicant.getEmail());
+        applicant.setAbout(updatedApplicant.getAbout() !=
+                null ? updatedApplicant.getAbout() : applicant.getAbout());
 
         applicantRepository.save(applicant);
-        UpdateApplicantResponse response = modelMapperService.forResponse().map(applicant, UpdateApplicantResponse.class);
+        UpdateApplicantResponse response = modelMapperService.forResponse()
+                .map(applicant, UpdateApplicantResponse.class);
 
         return new SuccessDataResult<UpdateApplicantResponse>(response, "Applicant updated");
     }

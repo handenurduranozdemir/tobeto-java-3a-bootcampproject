@@ -56,12 +56,18 @@ public class InstructorManager implements InstructorService {
         Instructor updatedInstructor=modelMapperService.forRequest().map(instructorRequest,Instructor.class);//mapped
 
         instructor.setUpdatedDate(LocalDateTime.now());
-        instructor.setFirstName(updatedInstructor.getFirstName());
-        instructor.setLastName(updatedInstructor.getLastName());
-        instructor.setUsername(updatedInstructor.getUsername());
-        instructor.setNationalIdentity(updatedInstructor.getNationalIdentity());
-        instructor.setDateOfBirth(updatedInstructor.getDateOfBirth());
-        instructor.setCompanyName(updatedInstructor.getCompanyName());
+        instructor.setFirstName(updatedInstructor.getFirstName() !=
+                null ? updatedInstructor.getFirstName() : instructor.getFirstName());
+        instructor.setLastName(updatedInstructor.getLastName() !=
+                null ? updatedInstructor.getLastName() : instructor.getLastName());
+        instructor.setUsername(updatedInstructor.getUsername() !=
+                null ? updatedInstructor.getUsername() : instructor.getUsername());
+        instructor.setNationalIdentity(updatedInstructor.getNationalIdentity() !=
+                null ? updatedInstructor.getNationalIdentity() : instructor.getNationalIdentity());
+        instructor.setDateOfBirth(updatedInstructor.getDateOfBirth() !=
+                null ? updatedInstructor.getDateOfBirth() : instructor.getDateOfBirth());
+        instructor.setCompanyName(updatedInstructor.getCompanyName() !=
+                null ? updatedInstructor.getCompanyName() : instructor.getCompanyName());
 
         instructorRepository.save(instructor);
         UpdateInstructorResponse response = modelMapperService.forResponse().map(instructor, UpdateInstructorResponse.class);

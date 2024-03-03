@@ -62,9 +62,12 @@ public class BlacklistManager implements BlacklistService {
         Blacklist updatedBlacklist = modelMapperService.forRequest().map(blacklistRequest,Blacklist.class);
 
         blacklist.setDate(LocalDate.now());
-        blacklist.setReason(updatedBlacklist.getReason());
-        blacklist.setApplicant(updatedBlacklist.getApplicant());
-        blacklist.setDate(updatedBlacklist.getDate());
+        blacklist.setReason(updatedBlacklist.getReason() !=
+                null ? updatedBlacklist.getReason() : blacklist.getReason());
+        blacklist.setApplicant(updatedBlacklist.getApplicant() !=
+                null ? updatedBlacklist.getApplicant() : blacklist.getApplicant());
+        blacklist.setDate(updatedBlacklist.getDate() !=
+                null ? updatedBlacklist.getDate() : blacklist.getDate());
         blacklistRepository.save(blacklist);
 
         UpdateBlacklistResponse response = modelMapperService.forResponse().map(blacklist, UpdateBlacklistResponse.class);
