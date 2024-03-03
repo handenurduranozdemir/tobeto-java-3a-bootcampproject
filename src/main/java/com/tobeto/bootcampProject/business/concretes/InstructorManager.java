@@ -6,13 +6,16 @@ import com.tobeto.bootcampProject.business.requests.update.UpdateInstructorReque
 import com.tobeto.bootcampProject.business.responses.get.GetAllInstructorsResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdInstructorResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateInstructorResponse;
+import com.tobeto.bootcampProject.core.exceptions.types.BusinessException;
 import com.tobeto.bootcampProject.core.results.DataResult;
 import com.tobeto.bootcampProject.core.results.Result;
 import com.tobeto.bootcampProject.core.results.SuccessDataResult;
 import com.tobeto.bootcampProject.core.results.SuccessResult;
 import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.bootcampProject.dataacces.InstructorRepository;
+import com.tobeto.bootcampProject.dataacces.UserRepository;
 import com.tobeto.bootcampProject.entities.Instructor;
+import com.tobeto.bootcampProject.entities.User;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +29,8 @@ import java.util.stream.Collectors;
 public class InstructorManager implements InstructorService {
     private InstructorRepository instructorRepository;
     private ModelMapperService modelMapperService;
+    private final UserRepository userRepository;
+
     @Override
     public DataResult<List<GetAllInstructorsResponse>> getAll() {
         List<Instructor> instructors = instructorRepository.findAll();
@@ -45,8 +50,9 @@ public class InstructorManager implements InstructorService {
     }
 
     @Override
-    public void add(CreateInstructorRequest createInstructorRequest) {
-        Instructor instructor=modelMapperService.forRequest().map(createInstructorRequest,Instructor.class);//mapped
+    public void add(CreateInstructorRequest instructorRequest) {
+        checkIfUserExist(instructorRequest.getNationalIdentity());
+        Instructor instructor=modelMapperService.forRequest().map(instructorRequest,Instructor.class);//mapped
         instructorRepository.save(instructor);
     }
 
@@ -79,5 +85,12 @@ public class InstructorManager implements InstructorService {
     public Result delete(int id) {
         instructorRepository.deleteById(id);
         return new SuccessResult("Instructor is deleted");
+    }
+
+    @Override
+    public void checkIfUserExist(String nationalIdentity) {
+        User instructor = userRepository.findByNationalIdentity(nationalIdentity);
+        if(instructor != null)
+            throw new BusinessException("Instructor is already created");
     }
 }

@@ -12,4 +12,5 @@ public class GetAllInstructorsResponse {
     private String about;
     private String userName;
     private String companyName;
+    private String nationalIdentity;
 }

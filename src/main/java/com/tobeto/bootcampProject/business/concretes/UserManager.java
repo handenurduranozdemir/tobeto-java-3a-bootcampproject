@@ -4,6 +4,7 @@ import com.tobeto.bootcampProject.business.abstracts.UserService;
 import com.tobeto.bootcampProject.business.responses.get.GetAllUserResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByEmailUserResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdUserResponse;
+import com.tobeto.bootcampProject.core.exceptions.types.BusinessException;
 import com.tobeto.bootcampProject.core.results.DataResult;
 import com.tobeto.bootcampProject.core.results.Result;
 import com.tobeto.bootcampProject.core.results.SuccessDataResult;
@@ -51,5 +52,12 @@ public class UserManager implements UserService {
     public Result delete(int id) {
         userRepository.deleteById(id);
         return new SuccessResult("User is deleted");
+    }
+
+    @Override
+    public void checkIfUserExist(String nationalIdentity) {
+        User user = userRepository.findByNationalIdentity(nationalIdentity);
+        if (user != null)
+            throw new BusinessException("User is already exist");
     }
 }

@@ -16,4 +16,5 @@ public interface EmployeeService {
     void add(CreateEmployeeRequest employeeRequest);
     DataResult<UpdateEmployeeResponse> update(UpdateEmployeeRequest updateEmployeeRequest);
     Result delete(int id);
+    void checkIfUserExist(String nationalIdentity);
 }

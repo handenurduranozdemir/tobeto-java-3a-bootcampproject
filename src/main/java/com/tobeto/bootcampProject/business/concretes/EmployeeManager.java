@@ -6,13 +6,16 @@ import com.tobeto.bootcampProject.business.requests.update.UpdateEmployeeRequest
 import com.tobeto.bootcampProject.business.responses.get.GetAllEmployeesResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdEmployeeResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateEmployeeResponse;
+import com.tobeto.bootcampProject.core.exceptions.types.BusinessException;
 import com.tobeto.bootcampProject.core.results.DataResult;
 import com.tobeto.bootcampProject.core.results.Result;
 import com.tobeto.bootcampProject.core.results.SuccessDataResult;
 import com.tobeto.bootcampProject.core.results.SuccessResult;
 import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.bootcampProject.dataacces.EmployeeRepository;
+import com.tobeto.bootcampProject.dataacces.UserRepository;
 import com.tobeto.bootcampProject.entities.Employee;
+import com.tobeto.bootcampProject.entities.User;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +29,7 @@ public class EmployeeManager implements EmployeeService {
 
     private EmployeeRepository employeeRepository;
     private ModelMapperService modelMapperService;
+    private final UserRepository userRepository;
 
     @Override
     public DataResult<List<GetAllEmployeesResponse>> getAll() {
@@ -48,6 +52,7 @@ public class EmployeeManager implements EmployeeService {
 
     @Override
     public void add(CreateEmployeeRequest employeeRequest) {
+        checkIfUserExist(employeeRequest.getNationalIdentity());
         Employee employee=modelMapperService.forRequest().map(employeeRequest,Employee.class);//mapped
 
         this.employeeRepository.save(employee);
@@ -83,5 +88,12 @@ public class EmployeeManager implements EmployeeService {
     {
         employeeRepository.deleteById(id);
         return new SuccessResult("Employee is deleted");
+    }
+
+    @Override
+    public void checkIfUserExist(String nationalIdentity) {
+        User employee = userRepository.findByNationalIdentity(nationalIdentity);
+        if (employee != null)
+            throw  new BusinessException("Employee is already created");
     }
 }

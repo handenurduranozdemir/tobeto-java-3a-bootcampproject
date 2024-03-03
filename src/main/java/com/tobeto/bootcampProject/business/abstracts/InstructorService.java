@@ -16,4 +16,6 @@ public interface InstructorService {
     void add(CreateInstructorRequest createInstructorRequest);
     DataResult<UpdateInstructorResponse> update(UpdateInstructorRequest updateInstructorRequest);
     Result delete(int id);
+    void checkIfUserExist(String nationalIdentity);
 }
+

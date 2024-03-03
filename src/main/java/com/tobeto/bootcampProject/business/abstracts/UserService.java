@@ -13,4 +13,5 @@ public interface UserService {
     DataResult<GetByEmailUserResponse> getByEmail(String email);
     DataResult<GetByIdUserResponse> getById(int id);
     Result delete(int id);
+    void checkIfUserExist(String nationalIdentity);
 }

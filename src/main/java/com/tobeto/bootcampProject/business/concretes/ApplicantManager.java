@@ -6,13 +6,16 @@ import com.tobeto.bootcampProject.business.requests.update.UpdateApplicantReques
 import com.tobeto.bootcampProject.business.responses.get.GetAllApplicantsResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdApplicantResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateApplicantResponse;
+import com.tobeto.bootcampProject.core.exceptions.types.BusinessException;
 import com.tobeto.bootcampProject.core.results.DataResult;
 import com.tobeto.bootcampProject.core.results.Result;
 import com.tobeto.bootcampProject.core.results.SuccessDataResult;
 import com.tobeto.bootcampProject.core.results.SuccessResult;
 import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.bootcampProject.dataacces.ApplicantRepository;
+import com.tobeto.bootcampProject.dataacces.UserRepository;
 import com.tobeto.bootcampProject.entities.Applicant;
+import com.tobeto.bootcampProject.entities.User;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +30,7 @@ public class ApplicantManager implements ApplicantService {
 
     private ApplicantRepository applicantRepository;
     private ModelMapperService modelMapperService;
+    private final UserRepository userRepository;
 
     @Override
     public DataResult<List<GetAllApplicantsResponse>> getAll() {
@@ -49,6 +53,7 @@ public class ApplicantManager implements ApplicantService {
 
     @Override
     public void add(CreateApplicantRequest applicantRequest) {
+        checkIfUserExist(applicantRequest.getNationalIdentity());
         Applicant applicant = modelMapperService.forRequest()
                 .map(applicantRequest,Applicant.class);
         this.applicantRepository.save(applicant);
@@ -87,5 +92,13 @@ public class ApplicantManager implements ApplicantService {
         applicantRepository.deleteById(id);
         return new SuccessResult("Applicant deleted");
     }
+
+    @Override
+    public void checkIfUserExist(String nationalIdentity) {
+        User applicant = userRepository.findByNationalIdentity(nationalIdentity);
+        if (applicant !=  null)
+            throw new BusinessException("Applicant is already created");
+    }
+
 }
 

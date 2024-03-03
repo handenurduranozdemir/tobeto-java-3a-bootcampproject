@@ -12,4 +12,5 @@ public class CreateApplicantRequest {
     private String userName;
     private String firstName;
     private String lastName;
+    private String nationalIdentity;
 }

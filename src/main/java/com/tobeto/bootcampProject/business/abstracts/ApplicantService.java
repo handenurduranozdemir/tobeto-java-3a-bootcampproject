@@ -16,5 +16,6 @@ public interface ApplicantService {
     void add(CreateApplicantRequest applicantRequest);
     DataResult<UpdateApplicantResponse> update(UpdateApplicantRequest updateApplicantRequest);
     Result delete(int id);
+    void checkIfUserExist(String nationalIdentity);
 
 }
