@@ -25,5 +25,6 @@ public class Blacklist extends BaseEntity<Integer> {
     private LocalDate date;
 
     @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "applicant_id")
     private Applicant applicant;
 }

@@ -7,18 +7,22 @@ import com.tobeto.bootcampProject.business.responses.create.CreateApplicationRes
 import com.tobeto.bootcampProject.business.responses.get.GetAllApplicationsResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdApplicationResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateApplicationResponse;
+import com.tobeto.bootcampProject.core.exceptions.types.BlacklistException;
 import com.tobeto.bootcampProject.core.results.DataResult;
 import com.tobeto.bootcampProject.core.results.Result;
 import com.tobeto.bootcampProject.core.results.SuccessDataResult;
 import com.tobeto.bootcampProject.core.results.SuccessResult;
 import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.bootcampProject.dataacces.ApplicationRepository;
+import com.tobeto.bootcampProject.dataacces.BlacklistRepository;
 import com.tobeto.bootcampProject.entities.Application;
+import com.tobeto.bootcampProject.entities.Blacklist;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,6 +30,8 @@ import java.util.stream.Collectors;
 public class ApplicationManager implements ApplicationService {
     private ApplicationRepository applicationRepository;
     private ModelMapperService modelMapperService;
+    private final BlacklistRepository blacklistRepository;
+
     @Override
 
     public DataResult<List<GetAllApplicationsResponse>> getAll() {
@@ -47,6 +53,11 @@ public class ApplicationManager implements ApplicationService {
 
     @Override
     public DataResult<CreateApplicationResponse> add(CreateApplicationRequest applicationRequest) {
+        Optional<Blacklist> optionalBlacklist = blacklistRepository.findById(applicationRequest.getApplicantId());
+        if(optionalBlacklist != null) {
+            throw new BlacklistException("Applicant is not allowed to apply");
+        }
+
         Application application = modelMapperService.forRequest().map(applicationRequest,Application.class);
         applicationRepository.save(application);
 
