@@ -27,9 +27,9 @@ public class InstructorController extends BaseController{
     }
     @PostMapping("/add")
     @ResponseStatus(code= HttpStatus.CREATED)
-    public void add(@RequestBody() CreateInstructorRequest instructorRequest)
+    public ResponseEntity<?> add(@RequestBody() CreateInstructorRequest instructorRequest)
     {
-        instructorService.add(instructorRequest);
+        return handleDataResult(instructorService.add(instructorRequest));
     }
     @PutMapping
     public ResponseEntity<?> update(@RequestBody() UpdateInstructorRequest updateInstructorRequest){

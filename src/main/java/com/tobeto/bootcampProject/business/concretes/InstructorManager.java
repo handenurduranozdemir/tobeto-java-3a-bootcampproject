@@ -3,6 +3,7 @@ package com.tobeto.bootcampProject.business.concretes;
 import com.tobeto.bootcampProject.business.abstracts.InstructorService;
 import com.tobeto.bootcampProject.business.requests.create.CreateInstructorRequest;
 import com.tobeto.bootcampProject.business.requests.update.UpdateInstructorRequest;
+import com.tobeto.bootcampProject.business.responses.create.CreateInstructorResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetAllInstructorsResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdInstructorResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateInstructorResponse;
@@ -50,16 +51,21 @@ public class InstructorManager implements InstructorService {
     }
 
     @Override
-    public void add(CreateInstructorRequest instructorRequest) {
+    public DataResult<CreateInstructorResponse> add(CreateInstructorRequest instructorRequest) {
         checkIfUserExist(instructorRequest.getNationalIdentity());
-        Instructor instructor=modelMapperService.forRequest().map(instructorRequest,Instructor.class);//mapped
+        Instructor instructor=modelMapperService.forRequest().map(instructorRequest,Instructor.class);
         instructorRepository.save(instructor);
+
+        CreateInstructorResponse response = modelMapperService.forResponse()
+                .map(instructor, CreateInstructorResponse.class);
+
+        return new SuccessDataResult<CreateInstructorResponse>(response, "Instructor is created");
     }
 
     @Override
     public DataResult<UpdateInstructorResponse> update(UpdateInstructorRequest instructorRequest) {
         Instructor instructor = instructorRepository.findById(instructorRequest.getId()).orElseThrow();
-        Instructor updatedInstructor=modelMapperService.forRequest().map(instructorRequest,Instructor.class);//mapped
+        Instructor updatedInstructor=modelMapperService.forRequest().map(instructorRequest,Instructor.class);
 
         instructor.setUpdatedDate(LocalDateTime.now());
         instructor.setFirstName(updatedInstructor.getFirstName() !=
