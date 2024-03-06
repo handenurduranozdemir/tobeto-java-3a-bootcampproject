@@ -3,6 +3,7 @@ package com.tobeto.bootcampProject.business.concretes;
 import com.tobeto.bootcampProject.business.abstracts.EmployeeService;
 import com.tobeto.bootcampProject.business.requests.create.CreateEmployeeRequest;
 import com.tobeto.bootcampProject.business.requests.update.UpdateEmployeeRequest;
+import com.tobeto.bootcampProject.business.responses.create.CreateEmployeeResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetAllEmployeesResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdEmployeeResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateEmployeeResponse;
@@ -51,11 +52,16 @@ public class EmployeeManager implements EmployeeService {
     }
 
     @Override
-    public void add(CreateEmployeeRequest employeeRequest) {
+    public DataResult<CreateEmployeeResponse> add(CreateEmployeeRequest employeeRequest) {
         checkIfUserExist(employeeRequest.getNationalIdentity());
-        Employee employee=modelMapperService.forRequest().map(employeeRequest,Employee.class);//mapped
+        Employee employee=modelMapperService.forRequest().map(employeeRequest,Employee.class);
 
         this.employeeRepository.save(employee);
+
+        CreateEmployeeResponse response = modelMapperService.forResponse()
+                .map(employee, CreateEmployeeResponse.class);
+
+        return new SuccessDataResult<CreateEmployeeResponse> (response, "Employee is created");
     }
 
     @Override

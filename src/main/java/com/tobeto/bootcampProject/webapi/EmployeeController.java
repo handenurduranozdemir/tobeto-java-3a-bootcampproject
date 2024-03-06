@@ -27,8 +27,8 @@ public class EmployeeController extends BaseController {
 
     @PostMapping("/add")
     @ResponseStatus(code= HttpStatus.CREATED)
-    public  void add(@RequestBody() CreateEmployeeRequest employeeRequest){
-        employeeService.add(employeeRequest);
+    public ResponseEntity<?> add(@RequestBody() CreateEmployeeRequest employeeRequest){
+        return handleDataResult(employeeService.add(employeeRequest));
     }
 
     @PutMapping("/{id}")
