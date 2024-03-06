@@ -26,9 +26,9 @@ public class ApplicantController extends BaseController{
     }
     @PostMapping("/add")
     @ResponseStatus(code= HttpStatus.CREATED)
-    public void add(@RequestBody() CreateApplicantRequest applicantRequest)
+    public ResponseEntity<?> add(@RequestBody CreateApplicantRequest applicantRequest)
     {
-        applicantService.add(applicantRequest);
+        return handleDataResult(applicantService.add(applicantRequest));
     }
     @PutMapping
     public ResponseEntity<?> update(@RequestBody() UpdateApplicantRequest updateApplicantRequest)

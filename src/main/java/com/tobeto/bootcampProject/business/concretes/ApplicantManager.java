@@ -3,6 +3,7 @@ package com.tobeto.bootcampProject.business.concretes;
 import com.tobeto.bootcampProject.business.abstracts.ApplicantService;
 import com.tobeto.bootcampProject.business.requests.create.CreateApplicantRequest;
 import com.tobeto.bootcampProject.business.requests.update.UpdateApplicantRequest;
+import com.tobeto.bootcampProject.business.responses.create.CreateApplicantResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetAllApplicantsResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdApplicantResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateApplicantResponse;
@@ -52,11 +53,14 @@ public class ApplicantManager implements ApplicantService {
     }
 
     @Override
-    public void add(CreateApplicantRequest applicantRequest) {
+    public DataResult<CreateApplicantResponse> add(CreateApplicantRequest applicantRequest) {
         checkIfUserExist(applicantRequest.getNationalIdentity());
         Applicant applicant = modelMapperService.forRequest()
                 .map(applicantRequest,Applicant.class);
-        this.applicantRepository.save(applicant);
+        applicantRepository.save(applicant);
+
+        CreateApplicantResponse response = modelMapperService.forResponse().map(applicant, CreateApplicantResponse.class);
+        return new SuccessDataResult<CreateApplicantResponse>(response, "Applicant is created");
     }
 
     public DataResult<UpdateApplicantResponse> update(UpdateApplicantRequest applicantRequest) {
