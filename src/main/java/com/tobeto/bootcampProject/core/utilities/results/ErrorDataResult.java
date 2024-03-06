@@ -1,4 +1,4 @@
-package com.tobeto.bootcampProject.core.results;
+package com.tobeto.bootcampProject.core.utilities.results;
 
 public class ErrorDataResult<T> extends DataResult<T> {
     public ErrorDataResult(T data, String message)

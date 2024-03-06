@@ -6,8 +6,8 @@ import com.tobeto.bootcampProject.business.responses.create.CreateBootcampRespon
 import com.tobeto.bootcampProject.business.responses.get.GetAllBootcampsResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdBootcampResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateBootcampResponse;
-import com.tobeto.bootcampProject.core.results.DataResult;
-import com.tobeto.bootcampProject.core.results.Result;
+import com.tobeto.bootcampProject.core.utilities.results.DataResult;
+import com.tobeto.bootcampProject.core.utilities.results.Result;
 
 import java.util.List;
 

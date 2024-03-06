@@ -1,7 +1,7 @@
 package com.tobeto.bootcampProject.webapi;
 
-import com.tobeto.bootcampProject.core.results.DataResult;
-import com.tobeto.bootcampProject.core.results.Result;
+import com.tobeto.bootcampProject.core.utilities.results.DataResult;
+import com.tobeto.bootcampProject.core.utilities.results.Result;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 

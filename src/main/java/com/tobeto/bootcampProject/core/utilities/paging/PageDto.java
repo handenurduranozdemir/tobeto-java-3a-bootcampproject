@@ -1,4 +1,4 @@
-package com.tobeto.bootcampProject.core.paging;
+package com.tobeto.bootcampProject.core.utilities.paging;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

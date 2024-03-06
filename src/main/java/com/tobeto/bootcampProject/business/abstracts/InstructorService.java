@@ -5,8 +5,8 @@ import com.tobeto.bootcampProject.business.requests.update.UpdateInstructorReque
 import com.tobeto.bootcampProject.business.responses.get.GetAllInstructorsResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdInstructorResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateInstructorResponse;
-import com.tobeto.bootcampProject.core.results.DataResult;
-import com.tobeto.bootcampProject.core.results.Result;
+import com.tobeto.bootcampProject.core.utilities.results.DataResult;
+import com.tobeto.bootcampProject.core.utilities.results.Result;
 
 import java.util.List;
 

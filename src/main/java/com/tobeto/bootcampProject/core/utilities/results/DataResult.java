@@ -1,4 +1,4 @@
-package com.tobeto.bootcampProject.core.results;
+package com.tobeto.bootcampProject.core.utilities.results;
 
 public class DataResult<T> extends Result{
     private T data;

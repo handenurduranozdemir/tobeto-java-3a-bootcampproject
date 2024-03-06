@@ -7,10 +7,10 @@ import com.tobeto.bootcampProject.business.responses.create.CreateBootcampRespon
 import com.tobeto.bootcampProject.business.responses.get.GetAllBootcampsResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdBootcampResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateBootcampResponse;
-import com.tobeto.bootcampProject.core.results.DataResult;
-import com.tobeto.bootcampProject.core.results.Result;
-import com.tobeto.bootcampProject.core.results.SuccessDataResult;
-import com.tobeto.bootcampProject.core.results.SuccessResult;
+import com.tobeto.bootcampProject.core.utilities.results.DataResult;
+import com.tobeto.bootcampProject.core.utilities.results.Result;
+import com.tobeto.bootcampProject.core.utilities.results.SuccessDataResult;
+import com.tobeto.bootcampProject.core.utilities.results.SuccessResult;
 import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.bootcampProject.dataacces.ApplicationRepository;
 import com.tobeto.bootcampProject.dataacces.BootcampRepository;

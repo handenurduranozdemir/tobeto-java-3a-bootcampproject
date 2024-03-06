@@ -3,8 +3,8 @@ package com.tobeto.bootcampProject.business.abstracts;
 import com.tobeto.bootcampProject.business.responses.get.GetAllUserResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByEmailUserResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdUserResponse;
-import com.tobeto.bootcampProject.core.results.DataResult;
-import com.tobeto.bootcampProject.core.results.Result;
+import com.tobeto.bootcampProject.core.utilities.results.DataResult;
+import com.tobeto.bootcampProject.core.utilities.results.Result;
 
 import java.util.List;
 

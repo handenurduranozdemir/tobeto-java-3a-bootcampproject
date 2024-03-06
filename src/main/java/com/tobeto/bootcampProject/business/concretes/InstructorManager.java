@@ -7,10 +7,10 @@ import com.tobeto.bootcampProject.business.responses.get.GetAllInstructorsRespon
 import com.tobeto.bootcampProject.business.responses.get.GetByIdInstructorResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateInstructorResponse;
 import com.tobeto.bootcampProject.core.exceptions.types.BusinessException;
-import com.tobeto.bootcampProject.core.results.DataResult;
-import com.tobeto.bootcampProject.core.results.Result;
-import com.tobeto.bootcampProject.core.results.SuccessDataResult;
-import com.tobeto.bootcampProject.core.results.SuccessResult;
+import com.tobeto.bootcampProject.core.utilities.results.DataResult;
+import com.tobeto.bootcampProject.core.utilities.results.Result;
+import com.tobeto.bootcampProject.core.utilities.results.SuccessDataResult;
+import com.tobeto.bootcampProject.core.utilities.results.SuccessResult;
 import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.bootcampProject.dataacces.InstructorRepository;
 import com.tobeto.bootcampProject.dataacces.UserRepository;

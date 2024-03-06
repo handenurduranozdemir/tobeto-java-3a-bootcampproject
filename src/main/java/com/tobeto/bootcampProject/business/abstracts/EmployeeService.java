@@ -5,8 +5,8 @@ import com.tobeto.bootcampProject.business.requests.update.UpdateEmployeeRequest
 import com.tobeto.bootcampProject.business.responses.get.GetAllEmployeesResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdEmployeeResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateEmployeeResponse;
-import com.tobeto.bootcampProject.core.results.DataResult;
-import com.tobeto.bootcampProject.core.results.Result;
+import com.tobeto.bootcampProject.core.utilities.results.DataResult;
+import com.tobeto.bootcampProject.core.utilities.results.Result;
 
 import java.util.List;
 

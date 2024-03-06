@@ -7,10 +7,10 @@ import com.tobeto.bootcampProject.business.responses.create.CreateBlacklistRespo
 import com.tobeto.bootcampProject.business.responses.get.GetAllBlacklistResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdBlacklistResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateBlacklistResponse;
-import com.tobeto.bootcampProject.core.results.DataResult;
-import com.tobeto.bootcampProject.core.results.Result;
-import com.tobeto.bootcampProject.core.results.SuccessDataResult;
-import com.tobeto.bootcampProject.core.results.SuccessResult;
+import com.tobeto.bootcampProject.core.utilities.results.DataResult;
+import com.tobeto.bootcampProject.core.utilities.results.Result;
+import com.tobeto.bootcampProject.core.utilities.results.SuccessDataResult;
+import com.tobeto.bootcampProject.core.utilities.results.SuccessResult;
 import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.bootcampProject.dataacces.BlacklistRepository;
 import com.tobeto.bootcampProject.entities.Blacklist;

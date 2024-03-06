@@ -1,4 +1,4 @@
-package com.tobeto.bootcampProject.core.results;
+package com.tobeto.bootcampProject.core.utilities.results;
 
 public class SuccessDataResult<T> extends DataResult<T> {
     public SuccessDataResult(T data, String message)
