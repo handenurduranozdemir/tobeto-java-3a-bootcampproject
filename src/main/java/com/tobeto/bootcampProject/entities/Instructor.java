@@ -19,5 +19,5 @@ public class Instructor extends User {
     private String companyName;
 
     @OneToMany(mappedBy = "instructor")
-    private List<Bootcamp> bootcamps;
+    private List<Bootcamp> bootcampList;
 }
