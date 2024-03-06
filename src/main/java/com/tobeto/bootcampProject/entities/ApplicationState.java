@@ -7,16 +7,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Application_States")
+@Table(name = "ApplicationStates")
 public class ApplicationState extends BaseEntity<Integer> {
 
-    @ManyToOne
-    private Application application;
+    @OneToMany(mappedBy = "applicationState")
+    private List<Application> applicationList;
 
     @Column(name = "state")
     private int state;

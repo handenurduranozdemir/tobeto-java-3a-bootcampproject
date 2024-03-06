@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -15,8 +17,8 @@ import lombok.Setter;
 @Table(name = "Bootcamp_States")
 public class BootcampState extends BaseEntity<Integer> {
 
-    @ManyToOne
-    private Bootcamp bootcamp;
+    @OneToMany(mappedBy = "bootcampState")
+    private List<Bootcamp> bootcampList;
 
     @Column(name = "state")
     private int state;

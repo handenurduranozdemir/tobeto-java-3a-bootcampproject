@@ -19,8 +19,8 @@ public class Applicant extends User {
     private String about;
 
     @OneToMany(mappedBy = "applicant")
-    private List<Application> applications;
+    private List<Application> applicationList;
 
-    @OneToMany(mappedBy = "applicant")
+    @OneToOne(mappedBy = "applicant")
     private Blacklist blacklist;
 }

@@ -16,7 +16,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "Blacklists")
-@PrimaryKeyJoinColumn(name = "user_id")
 public class Blacklist extends BaseEntity<Integer> {
     @Column(name = "reason")
     private String reason;
@@ -24,7 +23,7 @@ public class Blacklist extends BaseEntity<Integer> {
     @Column(name = "date")
     private LocalDate date;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne
     @JoinColumn(name = "applicant_id")
     private Applicant applicant;
 }

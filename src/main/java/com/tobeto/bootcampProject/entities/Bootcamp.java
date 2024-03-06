@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,17 +21,20 @@ public class Bootcamp extends BaseEntity<Integer> {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "instructor_id")
-    private User instructor;
+    @ManyToOne
+    @JoinColumn(name = "instructorId")
+    private Instructor instructor;
 
-    @Column(name = "start_date")
+    @Column(name = "startDate")
     private LocalDate startDate;
 
-    @Column(name = "end_date")
+    @Column(name = "endDate")
     private LocalDate endDate;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "bootcamp_state_id")
+    @ManyToOne
+    @JoinColumn(name = "bootcampStateId")
     private BootcampState bootcampState;
+
+    @OneToMany(mappedBy = "bootcamp")
+    private List<Application> applicationList;
 }

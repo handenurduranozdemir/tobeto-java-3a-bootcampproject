@@ -15,15 +15,15 @@ import lombok.Setter;
 @Table(name = "Applications")
 public class Application extends BaseEntity<Integer> {
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "applicant_id")
+    @ManyToOne
+    @JoinColumn(name = "applicantId")
     private Applicant applicant;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "bootcamp_id")
+    @ManyToOne
+    @JoinColumn(name = "bootcampId")
     private Bootcamp bootcamp;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "application_state_id")
+    @ManyToOne
+    @JoinColumn(name = "ApplicationStateId")
     private ApplicationState applicationState;
 }
