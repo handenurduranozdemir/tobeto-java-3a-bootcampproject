@@ -8,16 +8,21 @@ import com.tobeto.bootcampProject.business.responses.get.GetAllApplicantsRespons
 import com.tobeto.bootcampProject.business.responses.get.GetByIdApplicantResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateApplicantResponse;
 import com.tobeto.bootcampProject.core.exceptions.types.BusinessException;
-import com.tobeto.bootcampProject.core.results.DataResult;
-import com.tobeto.bootcampProject.core.results.Result;
-import com.tobeto.bootcampProject.core.results.SuccessDataResult;
-import com.tobeto.bootcampProject.core.results.SuccessResult;
+import com.tobeto.bootcampProject.core.utilities.paging.PageDto;
+import com.tobeto.bootcampProject.core.utilities.results.DataResult;
+import com.tobeto.bootcampProject.core.utilities.results.Result;
+import com.tobeto.bootcampProject.core.utilities.results.SuccessDataResult;
+import com.tobeto.bootcampProject.core.utilities.results.SuccessResult;
 import com.tobeto.bootcampProject.core.utilities.mapping.ModelMapperService;
 import com.tobeto.bootcampProject.dataacces.ApplicantRepository;
 import com.tobeto.bootcampProject.dataacces.UserRepository;
 import com.tobeto.bootcampProject.entities.Applicant;
 import com.tobeto.bootcampProject.entities.User;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
@@ -102,6 +107,17 @@ public class ApplicantManager implements ApplicantService {
         User applicant = userRepository.findByNationalIdentity(nationalIdentity);
         if (applicant !=  null)
             throw new BusinessException("Applicant is already created");
+    }
+
+    @Override
+    public DataResult<List<GetAllApplicantsResponse>> getAllSorted(PageDto pageDto) {
+        Sort sort = Sort.by(Sort.Direction.fromString(pageDto.getSortDirection()), pageDto.getSortBy());
+        Pageable pageable = PageRequest.of(pageDto.getPageNumber(), pageDto.getPageSize(), sort);
+        Page<Applicant> applicants = applicantRepository.findAll(pageable);
+        List<GetAllApplicantsResponse> response = applicants.stream()
+                .map(applicant -> modelMapperService.forResponse()
+                        .map(applicant, GetAllApplicantsResponse.class)).collect(Collectors.toList());
+        return new SuccessDataResult<List<GetAllApplicantsResponse>>(response, "All applicants are sorted");
     }
 
 }
