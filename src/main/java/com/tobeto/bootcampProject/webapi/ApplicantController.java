@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class ApplicantController extends BaseController{
     private ApplicantService applicantService;
 
-    @RequestMapping("/getall")
+    @GetMapping("/getall")
     public ResponseEntity<?> findAll()
     {
         return handleDataResult(applicantService.getAll());

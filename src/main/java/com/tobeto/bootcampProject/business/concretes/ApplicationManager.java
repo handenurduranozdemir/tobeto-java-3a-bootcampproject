@@ -53,10 +53,10 @@ public class ApplicationManager implements ApplicationService {
 
     @Override
     public DataResult<CreateApplicationResponse> add(CreateApplicationRequest applicationRequest) {
-        Optional<Blacklist> optionalBlacklist = blacklistRepository.findById(applicationRequest.getApplicantId());
+        /*Optional<Blacklist> optionalBlacklist = blacklistRepository.findById(applicationRequest.getApplicantId());
         if(optionalBlacklist != null) {
             throw new BlacklistException("Applicant is not allowed to apply");
-        }
+        }*/
 
         Application application = modelMapperService.forRequest().map(applicationRequest,Application.class);
         applicationRepository.save(application);

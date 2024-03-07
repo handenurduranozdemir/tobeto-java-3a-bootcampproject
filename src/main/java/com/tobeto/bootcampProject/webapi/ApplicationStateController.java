@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class ApplicationStateController extends BaseController{
     private ApplicationStateService applicationStateService;
 
-    @RequestMapping("/getall")
+    @GetMapping("/getall")
     public ResponseEntity<?> findAll()
     {
         return handleDataResult(applicationStateService.getAll());

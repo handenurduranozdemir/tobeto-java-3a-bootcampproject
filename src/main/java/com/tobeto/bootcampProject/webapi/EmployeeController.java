@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class EmployeeController extends BaseController {
     private EmployeeService employeeService;
 
-    @RequestMapping("/getall")
+    @GetMapping("/getall")
     public ResponseEntity<?> findAll()
     {
         return handleDataResult(employeeService.getAll());
