@@ -32,5 +32,11 @@ public abstract class BaseEntity <T>{
     @PreUpdate
     private void preUpdate(){
         this.updatedDate=LocalDateTime.now();
+
+        // Sadece güncellenirken createdDate'i değiştirme
+        if (this.createdDate == null) {
+            this.createdDate = LocalDateTime.now();
+        }
+
     }
 }
