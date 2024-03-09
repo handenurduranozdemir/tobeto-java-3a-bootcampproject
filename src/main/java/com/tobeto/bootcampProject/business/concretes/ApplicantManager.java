@@ -7,6 +7,7 @@ import com.tobeto.bootcampProject.business.responses.create.CreateApplicantRespo
 import com.tobeto.bootcampProject.business.responses.get.GetAllApplicantsResponse;
 import com.tobeto.bootcampProject.business.responses.get.GetByIdApplicantResponse;
 import com.tobeto.bootcampProject.business.responses.update.UpdateApplicantResponse;
+import com.tobeto.bootcampProject.core.aspects.logging.Loggable;
 import com.tobeto.bootcampProject.core.exceptions.types.BusinessException;
 import com.tobeto.bootcampProject.core.utilities.paging.PageDto;
 import com.tobeto.bootcampProject.core.utilities.results.DataResult;
@@ -58,6 +59,7 @@ public class ApplicantManager implements ApplicantService {
     }
 
     @Override
+    @Loggable
     public DataResult<CreateApplicantResponse> add(CreateApplicantRequest applicantRequest) {
         checkIfUserExist(applicantRequest.getNationalIdentity());
         Applicant applicant = modelMapperService.forRequest()
