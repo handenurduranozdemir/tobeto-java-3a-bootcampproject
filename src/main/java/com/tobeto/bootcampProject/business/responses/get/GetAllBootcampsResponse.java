@@ -11,4 +11,6 @@ public class GetAllBootcampsResponse {
     private int id;
     private String name;
     private int instructorId;
+    private String instructorFirstName;
+    private String instructorLastName;
 }
