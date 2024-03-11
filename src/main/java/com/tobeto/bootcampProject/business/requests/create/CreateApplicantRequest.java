@@ -40,7 +40,7 @@ public class CreateApplicantRequest {
 
     @NotEmpty(message = "Password must not be empty")
     @Size(min = 8, max = 30, message = "Password must be contain at least 8 characters")
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d.+$)",
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$",
             message = "Password must contain at least one lowercase character, " +
                     "one uppercase character and one number character")
     private String password;
