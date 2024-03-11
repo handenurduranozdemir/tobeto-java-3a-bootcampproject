@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -33,7 +33,7 @@ public class CreateInstructorRequest {
 
     @NotNull(message = "Date of Birt must not be null")
     @Past(message = "Date of birth must be in the past")
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
     @NotEmpty(message = "Company name must not be null")
     private String companyName;
