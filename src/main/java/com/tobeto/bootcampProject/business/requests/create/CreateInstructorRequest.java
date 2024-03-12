@@ -19,7 +19,7 @@ public class CreateInstructorRequest {
     @Size(min = 2, max = 50, message = "Last name must be contain at least 2 characters")
     private String lastName;
 
-    @NotEmpty(message = "username must not be empty")
+    @NotEmpty(message = "Username must not be empty")
     @Size(min = 2, max = 50, message = "Username must be contain at least 2 characters")
     private String username;
 
@@ -40,7 +40,7 @@ public class CreateInstructorRequest {
 
     @NotEmpty(message = "Password must not be empty")
     @Size(min = 8, max = 30, message = "Password must be contain at least 8 characters")
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d.+$)",
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$",
             message = "Password must contain at least one lowercase character, " +
                     "one uppercase character and one number character")
     private String password;

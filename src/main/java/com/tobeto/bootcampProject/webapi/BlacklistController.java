@@ -3,6 +3,7 @@ package com.tobeto.bootcampProject.webapi;
 import com.tobeto.bootcampProject.business.abstracts.BlacklistService;
 import com.tobeto.bootcampProject.business.requests.create.CreateBlacklistRequest;
 import com.tobeto.bootcampProject.business.requests.update.UpdateBlacklistRequest;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class BlacklistController extends BaseController{
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> add(@RequestBody CreateBlacklistRequest blacklistRequest) {
+    public ResponseEntity<?> add(@RequestBody @Valid CreateBlacklistRequest blacklistRequest) {
         return handleDataResult(blacklistService.add(blacklistRequest));
     }
 
@@ -29,7 +30,7 @@ public class BlacklistController extends BaseController{
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(UpdateBlacklistRequest blacklistRequest, int id){
+    public ResponseEntity<?> update(@RequestBody @Valid UpdateBlacklistRequest blacklistRequest, int id){
         return handleDataResult(blacklistService.update(blacklistRequest));
     }
 

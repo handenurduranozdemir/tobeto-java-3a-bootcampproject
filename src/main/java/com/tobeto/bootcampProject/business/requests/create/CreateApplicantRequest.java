@@ -19,7 +19,7 @@ public class CreateApplicantRequest {
     @Size(min = 2, max = 50, message = "Last name must be contain at least 2 characters")
     private String lastName;
 
-    @NotEmpty(message = "username must not be empty")
+    @NotEmpty(message = "Username must not be empty")
     @Size(min = 2, max = 50, message = "Username must be contain at least 2 characters")
     private String username;
 

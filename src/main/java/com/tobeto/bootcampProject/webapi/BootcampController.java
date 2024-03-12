@@ -3,6 +3,7 @@ package com.tobeto.bootcampProject.webapi;
 import com.tobeto.bootcampProject.business.abstracts.BootcampService;
 import com.tobeto.bootcampProject.business.requests.create.CreateBootcampRequest;
 import com.tobeto.bootcampProject.business.requests.update.UpdateBootcampRequest;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class BootcampController extends BaseController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> add(@RequestBody CreateBootcampRequest bootcampRequest) {
+    public ResponseEntity<?> add(@RequestBody @Valid CreateBootcampRequest bootcampRequest) {
         return handleDataResult(bootcampService.add(bootcampRequest));
     }
 
@@ -29,7 +30,7 @@ public class BootcampController extends BaseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(UpdateBootcampRequest bootcampRequest){
+    public ResponseEntity<?> update(@RequestBody @Valid UpdateBootcampRequest bootcampRequest){
         return handleDataResult(bootcampService.update(bootcampRequest));
     }
 

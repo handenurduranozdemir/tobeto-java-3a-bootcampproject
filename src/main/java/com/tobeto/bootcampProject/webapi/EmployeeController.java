@@ -3,6 +3,7 @@ package com.tobeto.bootcampProject.webapi;
 import com.tobeto.bootcampProject.business.abstracts.EmployeeService;
 import com.tobeto.bootcampProject.business.requests.create.CreateEmployeeRequest;
 import com.tobeto.bootcampProject.business.requests.update.UpdateEmployeeRequest;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,12 +28,12 @@ public class EmployeeController extends BaseController {
 
     @PostMapping("/add")
     @ResponseStatus(code= HttpStatus.CREATED)
-    public ResponseEntity<?> add(@RequestBody() CreateEmployeeRequest employeeRequest){
+    public ResponseEntity<?> add(@RequestBody @Valid CreateEmployeeRequest employeeRequest){
         return handleDataResult(employeeService.add(employeeRequest));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody UpdateEmployeeRequest updateEmployeeRequest){
+    public ResponseEntity<?> update(@RequestBody @Valid UpdateEmployeeRequest updateEmployeeRequest){
         return handleDataResult(employeeService.update(updateEmployeeRequest));
     }
 

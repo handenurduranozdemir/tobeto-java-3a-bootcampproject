@@ -17,6 +17,6 @@ public class CreateBlacklistRequest {
     @NotEmpty(message = "Date name must not be empty")
     private LocalDate date;
 
-    @NotEmpty(message = "Applicant ID name must not be empty")
+    @NotEmpty(message = "Applicant ID must not be empty")
     private int applicantId;
 }

@@ -3,6 +3,7 @@ package com.tobeto.bootcampProject.webapi;
 import com.tobeto.bootcampProject.business.abstracts.InstructorService;
 import com.tobeto.bootcampProject.business.requests.create.CreateInstructorRequest;
 import com.tobeto.bootcampProject.business.requests.update.UpdateInstructorRequest;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,12 +28,12 @@ public class InstructorController extends BaseController{
     }
     @PostMapping("/add")
     @ResponseStatus(code= HttpStatus.CREATED)
-    public ResponseEntity<?> add(@RequestBody() CreateInstructorRequest instructorRequest)
+    public ResponseEntity<?> add(@RequestBody @Valid CreateInstructorRequest instructorRequest)
     {
         return handleDataResult(instructorService.add(instructorRequest));
     }
     @PutMapping
-    public ResponseEntity<?> update(@RequestBody() UpdateInstructorRequest updateInstructorRequest){
+    public ResponseEntity<?> update(@RequestBody @Valid UpdateInstructorRequest updateInstructorRequest){
         return handleDataResult(instructorService.update(updateInstructorRequest));
     }
     @DeleteMapping("/{id}")
