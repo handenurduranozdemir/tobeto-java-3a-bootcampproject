@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class DeleteEmployeeResponse {
     private int id;
     private String message;
+    private String name;
 }

@@ -12,5 +12,8 @@ public class CreateApplicantResponse {
     private String firstName;
     private String lastName;
     private String userName;
+    private String email;
+    private String nationalIdentity;
+    private String dateOfBirth;
     private String about;
 }

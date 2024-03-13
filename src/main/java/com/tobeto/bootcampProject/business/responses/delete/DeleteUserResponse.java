@@ -8,5 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DeleteUserResponse {
+    private int id;
     private String message;
+    private String name;
 }

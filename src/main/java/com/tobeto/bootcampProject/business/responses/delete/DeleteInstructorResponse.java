@@ -8,5 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DeleteInstructorResponse {
+    private int id;
     private String message;
+    private String name;
 }

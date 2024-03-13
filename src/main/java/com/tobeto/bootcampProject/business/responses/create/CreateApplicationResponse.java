@@ -10,6 +10,10 @@ import lombok.NoArgsConstructor;
 public class CreateApplicationResponse {
     private int id;
     private int applicantId;
+    private String applicantFirstName;
+    private String applicantLastName;
     private int bootcampId;
+    private String BootcampName;
     private int applicationStateId;
+    private String applicationStateStatus;
 }

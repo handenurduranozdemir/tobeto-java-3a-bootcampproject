@@ -12,6 +12,8 @@ public class CreateInstructorResponse {
     private String firstName;
     private String lastName;
     private String username;
-    private String companyName;
+    private String email;
     private String nationalIdentity;
+    private String dateOfBirth;
+    private String companyName;
 }

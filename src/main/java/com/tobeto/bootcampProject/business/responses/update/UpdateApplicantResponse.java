@@ -9,9 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UpdateApplicantResponse {
     private int id;
-    private String username;
     private String firstName;
     private String lastName;
+    private String username;
     private String email;
+    private String nationalIdentity;
+    private String dateOfBirth;
     private String about;
 }
