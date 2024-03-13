@@ -62,7 +62,7 @@ public class ApplicationStateManager implements ApplicationStateService {
         ApplicationState updatedApplicationState = modelMapperService.forRequest().map(applicationStateRequest, ApplicationState.class);
 
         applicationState.setUpdatedDate(LocalDateTime.now());
-        applicationState.setState(updatedApplicationState.getState());
+        applicationState.setStatus(updatedApplicationState.getStatus());
         applicationStateRepository.save(applicationState);
 
         UpdateApplicationStateResponse response = modelMapperService.forResponse().map(applicationState, UpdateApplicationStateResponse.class);

@@ -13,5 +13,5 @@ public class UpdateApplicationStateRequest {
     private int id;
 
     @NotEmpty(message = "Application state must not be null")
-    private int state;
+    private String status;
 }

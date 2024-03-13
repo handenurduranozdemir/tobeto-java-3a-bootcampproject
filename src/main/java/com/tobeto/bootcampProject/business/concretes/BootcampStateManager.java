@@ -64,7 +64,7 @@ public class BootcampStateManager implements BootcampStateService {
         BootcampState updatedBootcampState = modelMapperService.forRequest().map(bootcampStateRequest,BootcampState.class);
 
         bootcampState.setUpdatedDate(LocalDateTime.now());
-        bootcampState.setState(updatedBootcampState.getState());
+        bootcampState.setStatus(updatedBootcampState.getStatus());
         bootcampStateRepository.save(bootcampState);
 
         UpdateBootcampStateResponse response = modelMapperService.forResponse().map(bootcampState, UpdateBootcampStateResponse.class);

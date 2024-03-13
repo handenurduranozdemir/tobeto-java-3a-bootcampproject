@@ -13,5 +13,5 @@ public class UpdateBootcampStateRequest {
     private int id;
 
     @NotEmpty(message = "State must not be null")
-    private int state;
+    private String status;
 }
