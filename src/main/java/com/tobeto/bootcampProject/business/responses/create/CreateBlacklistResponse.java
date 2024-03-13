@@ -14,4 +14,6 @@ public class CreateBlacklistResponse {
     private String reason;
     private LocalDate date;
     private int applicantId;
+    private String applicantFirstName;
+    private String applicantLastName;
 }
